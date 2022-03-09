@@ -63,8 +63,6 @@ CONFIG["VehicleControls"]["DoorControl"] = true
     Roll Front Passenger     = /window fp
     Roll Rear Driver         = /window rd
     Roll Rear Passenger      = /window rp
-    Roll Front Windows       = /window front
-    Roll Rear Windows        = /window rear
 ]]
 CONFIG["VehicleControls"]["WindowControl"] = true
 
