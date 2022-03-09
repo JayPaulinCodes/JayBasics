@@ -12,17 +12,22 @@ JayBasics is a simple all in one highly configurable FiveM script with features 
 
 ## Full Feature List
 
-All of the commands and features can be found on the [features page]() on the wiki.
+All of the commands and features can be found on the [features page](https://github.com/JayPaulinCodes/JayBasics/wiki/Features) on the wiki.
 
 
 ## Download
 
-Download JayBasics from the [release page]() to get started.
+Download the latest version of JayBasics from the [release page](https://github.com/JayPaulinCodes/JayBasics/releases) to get started.
 
 
 ## Installation & Configuration
 
-[Installation instructions]() as well as [configuration instructions]() can be found on their respective wiki page
+[Installation instructions](https://github.com/JayPaulinCodes/JayBasics/wiki/Installation) as well as [configuration instructions](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration) can be found on their respective wiki page.
+
+
+## Wiki
+
+Visit the [[wiki|Home]] to find out everything you need to know about the script.
 
 
 ## License
