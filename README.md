@@ -27,7 +27,7 @@ Download the latest version of JayBasics from the [release page](https://github.
 
 ## Wiki
 
-Visit the [[wiki|Home]] to find out everything you need to know about the script.
+Visit the [wiki](https://github.com/JayPaulinCodes/JayBasics/wiki) to find out everything you need to know about the script.
 
 
 ## License
