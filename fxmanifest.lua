@@ -1,9 +1,14 @@
-fx_version 'cerulean'
-games { 'gta5' }
+fx_version "cerulean"
+games { "gta5" }
 
-author "Jay (Error#3569)"
+author "JayPaulinCodes (https://github.com/JayPaulinCodes)"
+description "A simple all in one highly configurable FiveM script with tons of core and useful features for any server"
 
-version 'legacy'
+version "0.1.0"
+
+-- dependencies {
+--     "JayResourceManger"
+-- }
 
 shared_scripts{
     "common/locales.lua",
@@ -19,6 +24,7 @@ client_scripts {
 } 
 
 server_scripts {
+    "server/VersionCheck.lua",
     "server/main.lua",
     "server/functions.lua",
     "server/VehicleControls.lua",
