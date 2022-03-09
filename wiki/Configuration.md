@@ -36,26 +36,67 @@
 ## Vehicle Controls Options
 
 ### `CONFIG["VehicleControls"]["Enable"]`
+This is the master switch for the vehicle control module of the script controlling all commands associated with this module of the script.
+- While set to `true` other commands in this module can be enabled and disabled respectivley
+- While set to `false` all other commands in this module are disabled and cannot be enabled and disabled respectivley
 
 ### `CONFIG["VehicleControls"]["EngineControl"]`
+This controls the [[engine|Features#commands]] and it's aliases
+- While set to `true` enables the egine command
+- While set to `false` disables the egine command
+
+*Note that [`CONFIG["VehicleControls"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configvehiclecontrolsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["VehicleControls"]["TrunkControl"]`
+This controls the [[trunk|Features#commands]]
+- While set to `true` enables the trunk command
+- While set to `false` disables the trunk command
+
+*Note that [`CONFIG["VehicleControls"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configvehiclecontrolsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["VehicleControls"]["HoodControl"]`
+This controls the [[hood|Features#commands]]
+- While set to `true` enables the hood command
+- While set to `false` disables the hood command
+
+*Note that [`CONFIG["VehicleControls"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configvehiclecontrolsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["VehicleControls"]["DoorControl"]`
+This controls the [[door|Features#commands]]
+- While set to `true` enables the door command
+- While set to `false` disables the door command
+
+*Note that [`CONFIG["VehicleControls"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configvehiclecontrolsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["VehicleControls"]["WindowControl"]`
+This controls the [[window|Features#commands]] as well as any exports or events related to it.
+- While set to `true` enables the window command and exports or events related to it
+- While set to `false` disables the window command and exports or events related to it
+
+*Note that [`CONFIG["VehicleControls"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configvehiclecontrolsenable) must be set to true for this value to have any effect*
 
 ## Chat Commands Options
 
 ### `CONFIG["ChatCommands"]["Enable"]`
+This is the master switch for the chat commands module of the script controlling all commands associated with this module of the script.
+- While set to `true` other commands in this module can be enabled and disabled respectivley
+- While set to `false` all other commands in this module are disabled and cannot be enabled and disabled respectivley
 
 ### `CONFIG["ChatCommands"]["UseDefaultNames"]`
 
 ### `CONFIG["ChatCommands"]["DefaultMessagesToOOC"]`
+This controls wether or not messages that are not apart of a command are sent in OOC message style or default FiveM message style.
+- While set to `true` enables the default messages to OOC feature
+- While set to `false` disables the default messages to OOC feature
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["ProximityRange"]`
+This controls how far proximity messages are sent, so when set to `40.0` if you are within 40 GTA units of the person who executed the command you will see the message. 
+
+We don't know how GTA units translate to IRL mesurments due to the scale of GTA so we arbitrarily call them meters. 
+
+*If you know more about GTA units and how they would translate to IRL mesurments with GTA's scale contact me on discord*
 
 ### `CONFIG["ChatCommands"]["oocCommand"]`
 
@@ -79,4 +120,4 @@
 
 ---
 # DISCLAIMER
-#### For the love of god and to keep me and other sane while we provide support for this script, **DO NOT REMOVE** any config values or lines that have a value of `{}`. These are ment to be there for the structure of the config file, if you remove them your script **will not work**
+#### For the love of god and to keep me and others sane while we provide support for this script, **DO NOT REMOVE** any config values or lines that have a value of `{}`. These are ment to be there for the structure of the config file, if you remove them your script **will not work**
