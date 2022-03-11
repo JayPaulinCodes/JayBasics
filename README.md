@@ -1,5 +1,4 @@
-
-# JayBasics
+![JayBasics](https://i.imgur.com/F3ZD7KW.png)
 
 JayBasics is a simple all in one highly configurable FiveM script with features such as
 
