@@ -32,6 +32,7 @@
 ## Base Configuration
 
 ### `CONFIG["Locale"]`
+This sets the language pack that the script will use, at the moment we only have english, if you are fluent in another language and wish to help me translate them into other languages please contact me on discord.
 
 ## Vehicle Controls Options
 
@@ -83,6 +84,9 @@ This is the master switch for the chat commands module of the script controlling
 - While set to `false` all other commands in this module are disabled and cannot be enabled and disabled respectivley
 
 ### `CONFIG["ChatCommands"]["UseDefaultNames"]`
+This controls what name is going to be used in the chat commands.
+- While set to `true` the system will use the user's Steam/FiveM name as default and disable the [[setname|Features#commands]] and [[name|Features#commands]] commands
+- While set to `false` the system will use a user provided name and enable the [[setname|Features#commands]] and [[name|Features#commands]] commands
 
 ### `CONFIG["ChatCommands"]["DefaultMessagesToOOC"]`
 This controls wether or not messages that are not apart of a command are sent in OOC message style or default FiveM message style.
@@ -99,24 +103,69 @@ We don't know how GTA units translate to IRL mesurments due to the scale of GTA 
 *If you know more about GTA units and how they would translate to IRL mesurments with GTA's scale contact me on discord*
 
 ### `CONFIG["ChatCommands"]["oocCommand"]`
+This controls the [[ooc|Features#commands]]
+- While set to `true` enables the ooc command
+- While set to `false` disables the ooc command
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["meCommand"]`
+This controls the [[me|Features#commands]]
+- While set to `true` enables the me command
+- While set to `false` disables the me command
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["merCommand"]`
+This controls the [[mer|Features#commands]]
+- While set to `true` enables the mer command
+- While set to `false` disables the mer command
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["gmeCommand"]`
+This controls the [[gme|Features#commands]]
+- While set to `true` enables the gme command
+- While set to `false` disables the gme command
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["gmerCommand"]`
+This controls the [[gmer|Features#commands]]
+- While set to `true` enables the gmer command
+- While set to `false` disables the gmer command
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["oocHex"]`
+This controls the prefix colour for the [[ooc|Features#commands]] command
+- Reference [[HEX Codes|Hex-Colour-Codes]]
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["meHex"]`
+This controls the prefix colour for the [[me|Features#commands]] command
+- Reference [[HEX Codes|Hex-Colour-Codes]]
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["merHex"]`
+This controls the prefix colour for the [[mer|Features#commands]] command
+- Reference [[HEX Codes|Hex-Colour-Codes]]
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["gmeHex"]`
+This controls the prefix colour for the [[gme|Features#commands]] command
+- Reference [[HEX Codes|Hex-Colour-Codes]]
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ### `CONFIG["ChatCommands"]["gmerHex"]`
+This controls the prefix colour for the [[gmer|Features#commands]] command
+- Reference [[HEX Codes|Hex-Colour-Codes]]
+
+*Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
 ---
 # DISCLAIMER
