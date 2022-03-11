@@ -3,8 +3,8 @@
 | **Release** 	| **Beta 0.1.0** 	|
 |---	|:---:	|
 | **Version** 	| 0.1.0 	|
-| **Release Date** 	| 12/03/2022 	|
-| **Update Type** 	| N/A 	|
+| **Release Date** 	| 11/03/2022 	|
+| **Release Type** 	| Beta Release 	|
 
 #### Additions
 ➕ Added Door System <br>
