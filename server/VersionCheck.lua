@@ -1,6 +1,5 @@
 local installedVersion = GetResourceMetadata(GetCurrentResourceName(), 'version', 0)
 local githubVersion = ''
-local badName = false
 local printArrayOpen = {
     "\n\n\n\t^4 _____________________________________________________",
     "\t^4| |^4                                                 ^4| |",
@@ -48,7 +47,6 @@ Citizen.CreateThread( function()
 
     -- Name Check
     if GetCurrentResourceName() ~= "JayBasics" then
-        badName = true
         for i, message in ipairs(printArrayName) do
             print(message)
         end
@@ -58,7 +56,7 @@ Citizen.CreateThread( function()
     Citizen.Wait(500)
 
     -- Version Check
-    if installedVersion < githubVersion then --	UPDATE DETECTED
+    if installedVersion ~= githubVersion then --	UPDATE DETECTED
         for i, message in ipairs(printArrayUpdate) do
             print(message)
         end
@@ -66,11 +64,6 @@ Citizen.CreateThread( function()
 
     for i, message in ipairs(printArrayClose) do
         print(message)
-    end
-
-    if badName then 
-        -- print("^3!!! ^1WARNING ^3!!!\t^7Stopping " .. GetCurrentResourceName() .. " Due To Invalid Name!")
-        -- TriggerEvent("Jay:ResourceManager:stopResource", GetCurrentResourceName())
     end
 
 end)

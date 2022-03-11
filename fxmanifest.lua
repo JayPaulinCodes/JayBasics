@@ -6,10 +6,6 @@ description "A simple all in one highly configurable FiveM script with tons of c
 
 version "0.1.0"
 
--- dependencies {
---     "JayResourceManger"
--- }
-
 shared_scripts{
     "common/locales.lua",
     "locales/*.lua",
