@@ -1,3 +1,15 @@
+## Version 0.2.1
+
+| **Release** 	| **Beta 0.2.1** 	|
+|---	|:---:	|
+| **Version** 	| 0.2.1 	|
+| **Release Date** 	| 14/04/2022 	|
+| **Release Type** 	| Beta Release Patch 	|
+
+#### Changes
+➖ Changed some backend work on the laser sight feature
+➖ Fixed an issue with the version checker
+
 ## Version 0.2.0
 
 | **Release** 	| **Beta 0.2.0** 	|

@@ -4,7 +4,7 @@ games { "gta5" }
 author "JayPaulinCodes (https://github.com/JayPaulinCodes)"
 description "A simple all in one highly configurable FiveM script with tons of core and useful features for any server"
 
-version "0.1.0"
+version "0.2.0"
 
 ui_page "html/index.html"
 

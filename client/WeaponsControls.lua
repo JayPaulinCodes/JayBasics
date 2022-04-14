@@ -1,7 +1,7 @@
 if CONFIG["WeaponControls"]["Enable"] then
 
     local taserSight_Enabled = false
-    local taserSight_Delay = 1000
+    local taserSight_TaskDelay = 1000
     
     if CONFIG["WeaponControls"]["DisableAutoReload"] then SetWeaponsNoAutoreload(true) else SetWeaponsNoAutoreload(false) end
     
@@ -68,9 +68,9 @@ if CONFIG["WeaponControls"]["Enable"] then
         RegisterCommand("tasersight", function(source, args, rawCommands)
             taserSight_Enabled = not taserSight_Enabled
             if taserSight_Enabled then
-                drawNotificationColour(_("laserSightEnabled"), _("greenHex")))
+                drawNotificationColour(_("laserSightEnabled"), _("greenHex"))
             else
-                drawNotificationColour(_("laserSightDisabled"), _("redHex")))
+                drawNotificationColour(_("laserSightDisabled"), _("redHex"))
             end
         end, false)
     
@@ -89,27 +89,71 @@ if CONFIG["WeaponControls"]["Enable"] then
             local playerWeaponObject = getPedCurrentWeaponObject()
 
             -- Handle the laser sight
-            if isPedRealAndAlive(playerPed) and taserSight_Enabled and (playerWeaponObject.Hash == WEAPONS["911657153"].Hash or playerWeaponObject.Hash == WEAPONS["1171102963"].Hash) then
+            if IsPlayerFreeAiming(player) and isPedRealAndAlive(playerPed) and taserSight_Enabled and (playerWeaponObject.Hash == WEAPONS["911657153"].Hash or playerWeaponObject.Hash == WEAPONS["1171102963"].Hash) then
+                taserSight_TaskDelay = 0
+                local playerCameraRotation = GetGameplayCamRot()
+                local playerWeaponEntity = GetCurrentPedWeaponEntityIndex(playerPedId)
+                local startPoint = GetOffsetFromEntityInWorldCoords(playerWeaponEntity, 0, 0, -0.01)
+                local direction = RotationToDirection(playerCameraRotation)
 
-                local camview = GetFollowPedCamViewMode()
-                local crouch = GetPedStealthMovement(playerPedId)
+                local _x1, castHit, castCoords, _x2, _x3 = GetShapeTestResult(
+                    StartShapeTestRay(
+                        startPoint.x, 
+                        startPoint.y, 
+                        startPoint.z, 
+                        startPoint.x + direction.x * 150, 
+                        startPoint.y + direction.y * 150 ,
+                        startPoint.z + direction.z * 150,
+                        -1, 
+                        playerPedId, 
+                        1
+                    )
+                )
 
-                taserSight_Delay = 1000
-                if IsPlayerFreeAiming(player) then
-                    taserSight_Delay = 1
-                    local playerPedId_Weapon = GetCurrentPedWeaponEntityIndex(playerPedId)
-                    local offset = GetPedBoneCoords(playerPed, 0x6F06, 0.4, 0.0, 0.01)
-                    local castHit, castCoords = RayCastPed(offset, 150, playerPedId)
-                    
-                    if castHit ~= 0 then
-                        DrawLine(offset.x, offset.y, offset.z, castCoords.x, castCoords.y, castCoords.z, CONFIG["WeaponControls"]["TaserLaserColour"].r, CONFIG["WeaponControls"]["TaserLaserColour"].g, CONFIG["WeaponControls"]["TaserLaserColour"].b, CONFIG["WeaponControls"]["TaserLaserColour"].alpha)
-                        DrawSphere2(castCoords, 0.01, CONFIG["WeaponControls"]["TaserLaserColour"].r, CONFIG["WeaponControls"]["TaserLaserColour"].g, CONFIG["WeaponControls"]["TaserLaserColour"].b, CONFIG["WeaponControls"]["TaserLaserColour"].alpha)
-                    end
+                if castHit ~= 0 then
+                    DrawLine(
+                        startPoint.x, 
+                        startPoint.y, 
+                        startPoint.z, 
+                        castCoords.x, 
+                        castCoords.y, 
+                        castCoords.z, 
+                        CONFIG["WeaponControls"]["TaserLaserColour"].r, 
+                        CONFIG["WeaponControls"]["TaserLaserColour"].g,
+                        CONFIG["WeaponControls"]["TaserLaserColour"].b, 
+                        CONFIG["WeaponControls"]["TaserLaserColour"].alpha
+                    )
+                    DrawMarker(
+                        28, 
+                        castCoords.x, 
+                        castCoords.y, 
+                        castCoords.z, 
+                        0.0, 
+                        0.0, 
+                        0.0, 
+                        0.0, 
+                        0.0,
+                        0.0, 
+                        0.01, 
+                        0.01, 
+                        0.01, 
+                        CONFIG["WeaponControls"]["TaserLaserColour"].r, 
+                        CONFIG["WeaponControls"]["TaserLaserColour"].g,
+                        CONFIG["WeaponControls"]["TaserLaserColour"].b, 
+                        CONFIG["WeaponControls"]["TaserLaserColour"].alpha,
+                        false, 
+                        false, 
+                        2, 
+                        nil, 
+                        nil, 
+                        false
+                    )
                 end
-
+            else 
+                taserSight_TaskDelay = 1000
             end
 
-            Citizen.Wait(taserSight_Delay)
+            Citizen.Wait(taserSight_TaskDelay)
         end
     
     end)

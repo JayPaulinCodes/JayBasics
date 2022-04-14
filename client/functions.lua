@@ -877,47 +877,16 @@ end
     TODO: Document Function
     CREDIT: https://github.com/NAT2K15/laser-script/blob/main/client.lua
 ]]
-function DrawSphere2(position, radius, r, g, b, a)
-	DrawMarker(28, position.x, position.y, position.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, radius, radius, radius, r, g, b, a, false, false, 2, nil, nil, false)
-end
-
-
---[[
-    TODO: Document Function
-    CREDIT: https://github.com/NAT2K15/laser-script/blob/main/client.lua
-]]
 function RotationToDirection(rotation)
-	local adjustedRotation = 
-	{ 
+	local adjustedRotation = { 
 		x = (math.pi / 180) * rotation.x, 
 		y = (math.pi / 180) * rotation.y, 
 		z = (math.pi / 180) * rotation.z 
 	}
-	local direction = 
-	{
+	local direction = {
 		x = -math.sin(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)), 
-		y = ( math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)) ), 
+		y = math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)), 
 		z = math.sin(adjustedRotation.x)
 	}
 	return direction
-end
-
-
---[[
-    TODO: Document Function
-    CREDIT: https://github.com/NAT2K15/laser-script/blob/main/client.lua
-]]
-function RayCastPed(position, distance, ped)
-    local cameraRotation = GetGameplayCamRot()
-	local direction = RotationToDirection(cameraRotation)
-    print(direction.x, direction.y, direction.z)
-	local destination = 
-	{ 
-		x = position.x + direction.x * distance, 
-		y = position.y + direction.y * distance, 
-		z = position.z + direction.z * distance 
-	}
-
-	local a, b, c, d, e = GetShapeTestResult(StartShapeTestRay(position.x, position.y, position.z, destination.x, destination.y, destination.z, -1, ped, 1))
-    return b, c
 end
