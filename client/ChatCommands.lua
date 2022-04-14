@@ -9,15 +9,43 @@ if CONFIG["ChatCommands"]["Enable"] and not CONFIG["ChatCommands"]["UseDefaultNa
     end, false)
 
     RegisterCommand("name", function(source, args, user)
-        AddTextEntry("WHO_AM_I", "~s~Currently Playing As: ~y~" .. PlayerName)
-        BeginTextCommandDisplayHelp("WHO_AM_I")
-        EndTextCommandDisplayHelp(0, 0, 0, 5000)
+        SendNUIMessage({
+            module = "JayNotify",
+            data = {
+                type = "twotone",
+                options = {
+                    position = "top-right",
+                    text = {
+                        primary = "Currently Playing As: ",
+                        secondary = PlayerName
+                    },
+                    autoClose = true
+                }
+            }
+        })
+        -- AddTextEntry("WHO_AM_I", "~s~Currently Playing As: ~y~" .. PlayerName)
+        -- BeginTextCommandDisplayHelp("WHO_AM_I")
+        -- EndTextCommandDisplayHelp(0, 0, 0, 5000)
     end, false)
 
     RegisterCommand("whoami", function(source, args, user)
-        AddTextEntry("WHO_AM_I", "~s~Currently Playing As: ~y~" .. PlayerName)
-        BeginTextCommandDisplayHelp("WHO_AM_I")
-        EndTextCommandDisplayHelp(0, 0, 0, 5000)
+        SendNUIMessage({
+            module = "JayNotify",
+            data = {
+                type = "twotone",
+                options = {
+                    position = "top-right",
+                    text = {
+                        primary = "Currently Playing As: ",
+                        secondary = PlayerName
+                    },
+                    autoClose = true
+                }
+            }
+        })
+        -- AddTextEntry("WHO_AM_I", "~s~Currently Playing As: ~y~" .. PlayerName)
+        -- BeginTextCommandDisplayHelp("WHO_AM_I")
+        -- EndTextCommandDisplayHelp(0, 0, 0, 5000)
     end, false)
 
 end

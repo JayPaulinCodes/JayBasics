@@ -129,3 +129,107 @@ CONFIG["ChatCommands"]["meHex"] = "#F1F1F1"
 CONFIG["ChatCommands"]["merHex"] = "#F1F1F1"
 CONFIG["ChatCommands"]["gmeHex"] = "#2667FF"
 CONFIG["ChatCommands"]["gmerHex"] = "#2667FF"
+
+
+
+--      #############################
+--      ##     WEAPON CONTROLS     ##
+--      #############################
+
+--[[
+    This is where the weapon controls options and features
+    are configured.
+]]
+CONFIG["WeaponControls"] = {}
+
+--[[
+    This is the master switch for this module of the script, 
+    if this is false all features in this seciton will not operate
+]]
+CONFIG["WeaponControls"]["Enable"] = true
+
+--[[
+    This controls wether players will auto reload
+    weapons once their weapon runs out of ammo.
+]]
+CONFIG["WeaponControls"]["DisableAutoReload"] = true
+
+--[[
+    This controls wether players will auto swap out
+    weapons once their weapon runs out of ammo.
+]]
+CONFIG["WeaponControls"]["DisableAutoSwap"] = true
+
+--[[
+    Keeps the flashlight on a weapon on when not aiming weapon.
+]]
+CONFIG["WeaponControls"]["PersistentWeaponFlashlights"] = true
+
+--[[
+    This modifies the location of the icon.
+    (More info about this can be found on the wiki)
+]]
+CONFIG["WeaponControls"]["WeaponStateIcon"] = {
+    x = "56.5%",
+    y = "18.5%"
+}
+
+--[[
+    Enables the weapon safety feature.
+]]
+CONFIG["WeaponControls"]["EnableWeaponSafety"] = true
+
+--[[
+    The default keybind for the toggle saftey feature.
+]]
+CONFIG["WeaponControls"]["ToggleSafteyDefaultKey"] = "K"
+
+--[[
+    Enables the weapon fire modes feature.
+]]
+CONFIG["WeaponControls"]["EnableWeaponFireModes"] = true
+
+--[[
+    The default keybind for the change fire mode feature.
+]]
+CONFIG["WeaponControls"]["ChangeFireModeDefaultKey"] = "J"
+
+--[[
+    Enables the taser laser sight feature.
+]]
+CONFIG["WeaponControls"]["EnableTaserLaserSight"] = true
+
+--[[
+    The default keybind for the toggle the laser sight on
+    the taser
+]]
+CONFIG["WeaponControls"]["TaserLaserSightDefaultToggleKey"] = "I"
+
+--[[
+    Controls the colour of the laser. 
+
+    r is the Red value of the RGB Code (Min 0, Max 255)
+    g is the Green value of the RGB Code (Min 0, Max 255)
+    b is the Blue value of the RGB Code (Min 0, Max 255)
+    alpha is the Transparency of the laser (Min 0, Max 255)
+]]
+CONFIG["WeaponControls"]["TaserLaserColour"] = {
+    r = 255,
+    g = 0,
+    b = 0,
+    alpha = 255
+}
+
+--[[
+    List of weapons that dont have their reticle 
+    disabled
+]]
+CONFIG["WeaponControls"]["ReticleWeapons"] = {
+    WEAPONS["911657153"], -- WEAPON_STUNGUN
+    WEAPONS["1171102963"], -- WEAPON_STUNGUN_MP
+    WEAPONS["100416529"], -- WEAPON_SNIPERRIFLE
+    WEAPONS["177293209"], -- WEAPON_HEAVYSNIPER_MK2
+    WEAPONS["205991906"], -- WEAPON_HEAVYSNIPER
+    WEAPONS["1785463520"], -- WEAPON_MARKSMANRIFLE_MK2
+    WEAPONS["-952879014"], -- WEAPON_MARKSMANRIFLE
+}

@@ -10,6 +10,6 @@ Here you will be able to find everything you need to know about JayBasics and ho
  - [[Features|Features]]
 	 - [[Vehicle Controls|Features-Vehicle-Controls]]
 	 - [[Chat Commands|Features-Chat-Commands]]
-	 - [[Misc Features|Features-Misc-Features]]
+	 - [[Weapon Controls|Features-Weapon-Controls]]
  - [[Changelogs|Changelogs]]
  - [[Support|Support]]

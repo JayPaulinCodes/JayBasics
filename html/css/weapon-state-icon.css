@@ -1,0 +1,9 @@
+.weapon-state {
+    position: absolute;
+    right: 56.5%;
+    bottom: 18.5%;
+}
+
+#weapon-state-img {
+    width: 15%;
+}

@@ -4,7 +4,7 @@
 |---	|:---:	|
 | **Version** 	| _(4.2.1)_ 	|
 | **Release Date** 	| DD/MM/YYYY 	|
-| **Update Type** 	| _(4.2.1 = Major.Minor.patch)_ 	|
+| **Release Type** 	| _(4.2.1 = Major.Minor.patch)_ 	|
 
 #### Additions
 ➕ Added

@@ -9,15 +9,52 @@ function sendChatMessage(templateID, arguments)
 end
 
 --[[
+    OLD FUNCTION
     drawNotification(message)
     Displayes a message above the map
 
     @message - The message to display
 ]]
+-- function drawNotification(message)
+--     SetNotificationTextEntry("STRING")
+--     AddTextComponentString(message)
+--     DrawNotification(false, false)
+-- end
+
 function drawNotification(message)
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString(message)
-    DrawNotification(false, false)
+    SendNUIMessage({
+        module = "JayNotify",
+        data = {
+            type = "standard",
+            options = {
+                position = "top-right",
+                text = message,
+                autoClose = true
+            }
+        }
+    })
+end
+
+--[[
+    drawNotificationColour(message, hex)
+    Displayes a message above the map
+
+    @message - The message to display
+    @hex - The colour code of the message
+]]
+function drawNotificationColour(message, hex)
+    SendNUIMessage({
+        module = "JayNotify",
+        data = {
+            type = "colour",
+            options = {
+                position = "top-right",
+                colour = hex,
+                text = message,
+                autoClose = true
+            }
+        }
+    })
 end
 
 
@@ -497,6 +534,7 @@ function isPedInSeatForWindowIndex(playerPed, vehicle, windowIndex)
 
 end
 
+
 --[[
     DO NOT USE, OLD METHOD
 ]]
@@ -515,6 +553,9 @@ function getKeyFromWindowIndex(windowIndex)
 end
 
 
+--[[
+    TODO: Document Function
+]]
 function setWindowData(vehicle, windowIndex) 
     key = getKeyFromWindowIndex(windowIndex)
 
@@ -541,6 +582,9 @@ function setWindowData(vehicle, windowIndex)
 end
 
 
+--[[
+    TODO: Document Function
+]]
 function getVehicleInDirection(coordFrom, coordTo)
 	local rayHandle = CastRayPointToPoint(coordFrom.x, coordFrom.y, coordFrom.z, coordTo.x, coordTo.y, coordTo.z, 10, GetPlayerPed(-1), 0)
 	local a, b, c, d, vehicle = GetRaycastResult(rayHandle)
@@ -577,4 +621,303 @@ function getUserTextInput(TextEntry, ExampleText, MaxStringLenght)
 		return nil --Returns nil if the typing got aborted
 	end
     
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function toggleSaftey() 
+
+    -- PlaySoundFrontend(-1, "Faster_Click", "RESPAWN_ONLINE_SOUNDSET", 1)
+    playSound("weapons_safety.wav", 1.0)
+
+    if WeaponSafety then
+        
+        if CONFIG["WeaponControls"]["EnableWeaponFireModes"] then
+            -- TODO: return to previous state
+            if WeaponFireMode == 1 then
+                setWeaponIcon("single")
+            elseif WeaponFireMode == 2 then
+                setWeaponIcon("burst")
+            elseif WeaponFireMode == 3 then
+                setWeaponIcon("auto")
+            else
+                setWeaponIcon("standard")
+            end
+        else
+            setWeaponIcon("standard")
+        end
+        
+    else
+        setWeaponIcon("safety")
+    end
+
+    WeaponSafety = not WeaponSafety
+
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function cycleFireMode()
+    if not WeaponSafety then
+        local nextMode = (WeaponFireMode == 3 and 0 or WeaponFireMode + 1)
+
+        setFireMode(nextMode)
+    
+        WeaponFireMode = nextMode
+    end
+end
+
+
+--[[
+    TODO: Document Function
+
+    0 = Standard (No Modification)
+    1 = Single Shot
+    2 = Burst Fire
+    3 = Full Auto
+]]
+function setFireMode(state)
+
+    PlaySoundFrontend(-1, "Faster_Click", "RESPAWN_ONLINE_SOUNDSET", 1)
+
+    if state == 0 then
+        setWeaponIcon("standard")
+        WeaponFireMode = state
+    elseif state == 1 then
+        setWeaponIcon("single")
+        WeaponFireMode = state
+    elseif state == 2 then
+        setWeaponIcon("burst")
+        WeaponFireMode = state
+    elseif state == 3 then
+        setWeaponIcon("auto")
+        WeaponFireMode = state
+    end
+    
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function setWeaponIcon(state) 
+
+    if state == "safety" then
+        SendNUIMessage({
+            module = "weapon-state",
+            data = {
+                type = "updateWeaponState",
+                name = "WeaponIcon_Safety"
+            }
+        })
+    elseif state == "single" then
+        SendNUIMessage({
+            module = "weapon-state",
+            data = {
+                type = "updateWeaponState",
+                name = "WeaponIcon_Single"
+            }
+        })
+    elseif state == "burst" then
+        SendNUIMessage({
+            module = "weapon-state",
+            data = {
+                type = "updateWeaponState",
+                name = "WeaponIcon_Burst"
+            }
+        })
+    elseif state == "auto" then
+        SendNUIMessage({
+            module = "weapon-state",
+            data = {
+                type = "updateWeaponState",
+                name = "WeaponIcon_Auto"
+            }
+        })
+    elseif state == "standard" then
+        SendNUIMessage({
+            module = "weapon-state",
+            data = {
+                type = "updateWeaponState",
+                name = "WeaponIcon_Standard"
+            }
+        })
+    end
+
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function playSound(fileName, volume)
+    vol = volume or 1.0
+    SendNUIMessage({
+        module = "sound-player",
+        data = {
+            file = fileName,
+            volume = vol
+        }
+    })
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function getWeaponObjectFromHash(weaponHash)
+    return WEAPONS[weaponHash]
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function doesWeaponHaveFiringModes(weaponObject)
+    local playerPed = GetPlayerPed(-1)
+
+    if not isPedRealAndAlive(playerPed) then 
+        return false 
+    else 
+        for hash, weapon in ipairs(AutomaticWeapons) do
+            if weapon.Hash == weaponObject.Hash then
+                return true
+            end
+        end
+        return false    
+    end
+    
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function doesWeaponHaveSafety(weaponObject)
+    local playerPed = GetPlayerPed(-1)
+
+    if not isPedRealAndAlive(playerPed) then 
+        return false 
+    else
+        if weaponObject ~= nil then
+            local cat = weaponObject.Category
+            if cat == "GROUP_SHOTGUN" or cat == "GROUP_SNIPER" or cat == "GROUP_HEAVY" or cat == "GROUP_PISTOL" or cat == "GROUP_SMG" or cat == "GROUP_MG" or cat == "GROUP_RIFLE" then
+                return true
+            else
+                return false
+            end
+        else
+            return false
+        end
+    end
+
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function getPedCurrentWeaponObject()
+    local playerPed = GetPlayerPed(-1)
+    xx, currentWeaponHash = GetCurrentPedWeapon(playerPed)
+
+    if WEAPONS[tostring(currentWeaponHash)] ~= nil then
+        return WEAPONS[tostring(currentWeaponHash)]
+    else
+        return nill
+    end
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function showWeaponIcon() 
+    SendNUIMessage({
+        module = "weapon-state",
+        data = {
+            type = "showWeaponStateImg"
+        }
+    })
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function hideWeaponIcon() 
+    SendNUIMessage({
+        module = "weapon-state",
+        data = {
+            type = "hideWeaponStateImg"
+        }
+    })
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function doesArrayHaveValue (array, value)
+    for index, v in ipairs(array) do
+        if v == value then 
+            return true
+        end
+    end
+
+    return false
+end
+
+
+--[[
+    TODO: Document Function
+    CREDIT: https://github.com/NAT2K15/laser-script/blob/main/client.lua
+]]
+function DrawSphere2(position, radius, r, g, b, a)
+	DrawMarker(28, position.x, position.y, position.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, radius, radius, radius, r, g, b, a, false, false, 2, nil, nil, false)
+end
+
+
+--[[
+    TODO: Document Function
+    CREDIT: https://github.com/NAT2K15/laser-script/blob/main/client.lua
+]]
+function RotationToDirection(rotation)
+	local adjustedRotation = 
+	{ 
+		x = (math.pi / 180) * rotation.x, 
+		y = (math.pi / 180) * rotation.y, 
+		z = (math.pi / 180) * rotation.z 
+	}
+	local direction = 
+	{
+		x = -math.sin(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)), 
+		y = ( math.cos(adjustedRotation.z) * math.abs(math.cos(adjustedRotation.x)) ), 
+		z = math.sin(adjustedRotation.x)
+	}
+	return direction
+end
+
+
+--[[
+    TODO: Document Function
+    CREDIT: https://github.com/NAT2K15/laser-script/blob/main/client.lua
+]]
+function RayCastPed(position, distance, ped)
+    local cameraRotation = GetGameplayCamRot()
+	local direction = RotationToDirection(cameraRotation)
+    print(direction.x, direction.y, direction.z)
+	local destination = 
+	{ 
+		x = position.x + direction.x * distance, 
+		y = position.y + direction.y * distance, 
+		z = position.z + direction.z * distance 
+	}
+
+	local a, b, c, d, e = GetShapeTestResult(StartShapeTestRay(position.x, position.y, position.z, destination.x, destination.y, destination.z, -1, ped, 1))
+    return b, c
 end

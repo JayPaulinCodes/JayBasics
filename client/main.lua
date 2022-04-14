@@ -1,6 +1,40 @@
 Vehicles = {}
 PlayerLicense = nil
 PlayerName = nil
+WeaponSafety = false
+--[[
+    0 = Standard (No Modification)
+    1 = Single Shot
+    2 = Burst Fire
+    3 = Full Auto
+]]
+WeaponFireMode = 0 
+AutomaticWeapons = {
+    WEAPONS["324215364"], -- WEAPON_MICROSMG
+    WEAPONS["-619010992"], -- WEAPON_MACHINEPISTOL
+    WEAPONS["-1121678507"], -- WEAPON_MINISMG
+    WEAPONS["736523883"], -- WEAPON_SMG
+    WEAPONS["2024373456"], -- WEAPON_SMG_MK2
+    WEAPONS["-270015777"], -- WEAPON_ASSAULTSMG
+    WEAPONS["171789620"], -- WEAPON_COMBATPDW
+    WEAPONS["-1660422300"], -- WEAPON_MG
+    WEAPONS["2144741730"], -- WEAPON_COMBATMG
+    WEAPONS["-608341376"], -- WEAPON_COMBATMG_MK2
+    WEAPONS["1627465347"], -- WEAPON_GUSENBERG
+    WEAPONS["-1074790547"], -- WEAPON_ASSAULTRIFLE
+    WEAPONS["961495388"], -- WEAPON_ASSAULTRIFLE_MK2
+    WEAPONS["-2084633992"], -- WEAPON_CARBINERIFLE
+    WEAPONS["-86904375"], -- WEAPON_CARBINERIFLE_MK2
+    WEAPONS["-1357824103"], -- WEAPON_ADVANCEDRIFLE
+    WEAPONS["-1063057011"], -- WEAPON_SPECIALCARBINE
+    WEAPONS["-1768145561"], -- WEAPON_SPECIALCARBINE_MK2
+    WEAPONS["1649403952"], -- WEAPON_COMPACTRIFLE
+    WEAPONS["2132975508"], -- WEAPON_BULLPUPRIFLE
+    WEAPONS["-2066285827"], -- WEAPON_BULLPUPRIFLE_MK2
+    WEAPONS["-2009644972"], -- WEAPON_SNSPISTOL_MK2
+    WEAPONS["-1076751822"], -- WEAPON_SNSPISTOL
+    WEAPONS["584646201"], -- WEAPON_APPISTOL
+}
 
 Citizen.CreateThread(function()
     while true do
@@ -17,9 +51,9 @@ Citizen.CreateThread(function()
 end)
 
 
---      ###########################$
+--      ############################
 --      ##     CHAT TEMPLATES     ##
---      #######################$####
+--      ############################
 Citizen.CreateThread(function()
     Citizen.Wait(50)
 
@@ -59,7 +93,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:messageMe:self", 
-            "<p><span style=\"font-weight:normal;color:" .. CONFIG["ChatCommands"]["meHex"] .. "\">{0} [#{1}]</span><span style=\"font-weight:normal;\">: {3}</span></p>"
+            "<p><span style=\"font-weight:normal;color:" .. CONFIG["ChatCommands"]["meHex"] .. "\">{0} [#{1}]</span><span style=\"font-weight:normal;\">: {2}</span></p>"
         )
     end
 

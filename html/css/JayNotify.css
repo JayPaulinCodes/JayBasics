@@ -1,0 +1,111 @@
+:root {
+    --palette-colour-1: #2B2D42;
+    --palette-colour-2: #8D99AE;
+    --palette-colour-3: #EDF2F4;
+    --palette-colour-4: #EF233C;
+    --palette-colour-5: #D80032;
+    --palette-colour-6: #faa307;
+}
+
+.noti {
+    background-color: var(--palette-colour-1);
+    box-sizing: border-box;
+    padding: 1rem;
+    border: 1px solid var(--palette-colour-2);
+    border-radius: .25rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 500ms ease-in-out;
+    white-space: nowrap;
+}
+
+.text {
+    font-family: 'Gothic A1', sans-serif;
+    color: var(--palette-colour-3);
+}
+
+.text1 {
+    font-family: 'Gothic A1', sans-serif;
+    color: var(--palette-colour-6);
+}
+
+.text2 {
+    font-family: 'Gothic A1', sans-serif;
+    color: var(--palette-colour-3);
+}
+
+.noti-container[data-position$="-right"] .noti {
+    margin-left: auto;
+    transform: translateX(110%);
+}
+
+.noti-container[data-position$="-left"] .noti {
+    margin-right: auto;
+    transform: translateX(-110%);
+}
+
+.noti-container[data-position="top-center"] .noti {
+    margin: auto;
+    transform: translateY(-100vh);
+}
+
+.noti-container[data-position="bottom-center"] .noti {
+    margin: auto;
+    transform: translateY(100vh);
+}
+
+.noti-container .noti.show {
+    transform: translate(0, 0)
+}
+
+.noti.progress::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: calc(100% * var(--progress));
+    background-color: var(--palette-colour-4);
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.noti.can-close::after {
+    content: "\00D7";
+    color: var(--palette-colour-2);
+    position: absolute;
+    top: 2px;
+    right: 5px;
+}
+
+.noti-container {
+    position: fixed;
+    margin: 10px;
+    min-width: auto;
+    /* min-width: 150px; */
+    /* max-width: 250px; */
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.noti-container[data-position^="top"] {
+    top: 0px;
+}
+
+.noti-container[data-position^="bottom"] {
+    bottom: 0px;
+}
+
+.noti-container[data-position$="-right"] {
+    right: 0px;
+}
+
+.noti-container[data-position$="-left"] {
+    left: 0px;
+}
+
+.noti-container[data-position$="-center"] {
+    left: 50%;
+    transform: translateX(-50%);
+}

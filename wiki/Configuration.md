@@ -25,6 +25,19 @@
 | [129](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L129) | [`CONFIG["ChatCommands"]["merHex"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsmerhex) | String ([[HEX Colour Code\|HEX-Colour-Codes]]) | `"#F1F1F1"` |
 | [130](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L130) | [`CONFIG["ChatCommands"]["gmeHex"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsgmehex) | String ([[HEX Colour Code\|HEX-Colour-Codes]]) | `"#2667FF"` |
 | [131](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L131) | [`CONFIG["ChatCommands"]["gmerHex"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsgmerhex) | String ([[HEX Colour Code\|HEX-Colour-Codes]]) | `"#2667FF"` |
+| [149](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L149) | [`CONFIG["WeaponControls"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolsenable) | Boolean | `true` |
+| [155](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L155) | [`CONFIG["WeaponControls"]["DisableAutoReload"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolsdisableautreload) | Boolean | `true` |
+| [161](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L161) | [`CONFIG["WeaponControls"]["DisableAutoSwap"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolsdisableautoswap) | Boolean | `true` |
+| [166](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L166) | [`CONFIG["WeaponControls"]["PersistentWeaponFlashlights"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolspersistentweaponflashlights) | Boolean | `true` |
+| [172](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L172) | [`CONFIG["WeaponControls"]["WeaponStateIcon"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolsweaponstateicon) | Table | `{ x = "56.5%", y = "18.5%" }` |
+| [180](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L180) | [`CONFIG["WeaponControls"]["EnableWeaponSafety"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolsenableweaponsafety) | Boolean | `true` |
+| [185](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L185) | [`CONFIG["WeaponControls"]["ToggleSafteyDefaultKey"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolstogglesafteydefaultkey) | String | `"K"` |
+| [190](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L190) | [`CONFIG["WeaponControls"]["EnableWeaponFireModes"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolsenableweaponfiremodes) | Boolean | `true` |
+| [195](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L195) | [`CONFIG["WeaponControls"]["ChangeFireModeDefaultKey"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolschangefiremodedefaultkey) | String | `"J"` |
+| [200](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L200) | [`CONFIG["WeaponControls"]["EnableTaserLaserSight"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolsenabletaserlasersight) | Boolean | `true` |
+| [206](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L206) | [`CONFIG["WeaponControls"]["TaserLaserSightDefaultToggleKey"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolstaserlasersightdefaulttogglekey) | String | `"I"` |
+| [216](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L206) | [`CONFIG["WeaponControls"]["TaserLaserColour"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolstaserlasercolour) | Table | `Reference Description For More Info` |
+| [227](https://github.com/JayPaulinCodes/JayBasics/blob/master/common/config.lua#L227) | [`CONFIG["WeaponControls"]["ReticleWeapons"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configweaponcontrolsreticleweapons) | Table | `Reference Description For More Info` |
 
 
 
@@ -167,6 +180,94 @@ This controls the prefix colour for the [[gmer|Features#commands]] command
 
 *Note that [`CONFIG["ChatCommands"]["Enable"]`](https://github.com/JayPaulinCodes/JayBasics/wiki/Configuration#configchatcommandsenable) must be set to true for this value to have any effect*
 
+
+## Weapons Control
+
+### `CONFIG["WeaponControls"]["Enable"]`
+This is the master switch for the weapon controls module of the script controlling all commands associated with this module of the script.
+- While set to `true` other commands and features in this module can be enabled and disabled respectivley
+- While set to `false` all other commands and features in this module are disabled and cannot be enabled and disabled respectivley
+
+### `CONFIG["WeaponControls"]["DisableAutoReload"]`
+This will handle how players behave when their weapons magazine runs out of ammo.
+- While set to `true` players will not automatically reload their weapons when the current magazine runs out of ammo.
+- While set to `false` players will automatically reload their weapons when the current magazine runs out of ammo.
+
+### `CONFIG["WeaponControls"]["DisableAutoSwap"]`
+This will handle how players behave when their weapon runs out of ammo.
+- While set to `true` players will not automatically swap out their weapons when they run out of ammo.
+- While set to `false` players will automatically swap out their weapons when they run out of ammo.
+
+### `CONFIG["WeaponControls"]["PersistentWeaponFlashlights"]`
+This will handle how weapons flashlights behave.
+- While set to `true` weapons flashlights will stay on when players stop aiming their weapons
+- While set to `false` weapons flashlights will not stay on when players stop aiming their weapons
+
+### `CONFIG["WeaponControls"]["WeaponStateIcon"]`
+This config value controls the location of the weapon state icon.
+The x value controls the left and right possitioning, and the y value controls the up and down possitioning.
+By default the table looks like such: 
+```
+{
+    x = "56.5%",
+    y = "18.5%"
+}
+```
+
+### `CONFIG["WeaponControls"]["EnableWeaponSafety"]`
+This controls wether or not you can toggle the safety on your weapon.
+- While set to `true` applicable weapons will be able to have their safety toggled
+- While set to `false` applicable weapons will not be able to have their safety toggled
+
+### `CONFIG["WeaponControls"]["ToggleSafteyDefaultKey"]`
+This is the default key for the toggle safety keybind, this is the key that will be set for new user's on their first join of the server. User's are able to change this keybind for themselves as they see fit.
+The default key for the toggle safety feature is `K`
+
+### `CONFIG["WeaponControls"]["EnableWeaponFireModes"]`
+This controls wether or not you can cycle through firemodes on your weapons
+- While set to `true` applicable weapons will be able to cycle through firemodes
+- While set to `false` applicable weapons will not be able to cycle through firemodes
+
+### `CONFIG["WeaponControls"]["ChangeFireModeDefaultKey"]`
+This is the default key for the cycle firemode keybind, this is the key that will be set for new user's on their first join of the server. User's are able to change this keybind for themselves as they see fit.
+The default key for the cycle firemode feature is `J`
+
+### `CONFIG["WeaponControls"]["EnableTaserLaserSight"]`
+This controls wether or not you can toggle a laser sight for your taser.
+- While set to `true` you will be able to toggle a laser sight for your taser.
+- While set to `false` you will not be able to toggle a laser sight for your taser.
+
+### `CONFIG["WeaponControls"]["TaserLaserSightDefaultToggleKey"]`
+This is the default key for the toggle taser laser sight keybind, this is the key that will be set for new user's on their first join of the server. User's are able to change this keybind for themselves as they see fit.
+The default key for the toggle taser laser sight feature is `I`
+
+### `CONFIG["WeaponControls"]["TaserLaserColour"]`
+Using RGB values you are able to customize the colour of the taser laser sight.
+The default config entry is as such:
+```
+{
+    r = 255,
+    g = 0,
+    b = 0,
+    alpha = 255
+}
+```
+
+### `CONFIG["WeaponControls"]["ReticleWeapons"]`
+This is a list of weapons from the `weapons.lua` file in the common folder of the script that wont have their reticle removed.
+```
+{
+    WEAPONS["911657153"], -- WEAPON_STUNGUN
+    WEAPONS["1171102963"], -- WEAPON_STUNGUN_MP
+    WEAPONS["100416529"], -- WEAPON_SNIPERRIFLE
+    WEAPONS["177293209"], -- WEAPON_HEAVYSNIPER_MK2
+    WEAPONS["205991906"], -- WEAPON_HEAVYSNIPER
+    WEAPONS["1785463520"], -- WEAPON_MARKSMANRIFLE_MK2
+    WEAPONS["-952879014"], -- WEAPON_MARKSMANRIFLE
+}
+```
+
 ---
+
 # DISCLAIMER
 #### For the love of god and to keep me and others sane while we provide support for this script, **DO NOT REMOVE** any config values or lines that have a value of `{}`. These are ment to be there for the structure of the config file, if you remove them your script **will not work**

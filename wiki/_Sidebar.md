@@ -1,9 +1,9 @@
- - [Home]()
- - [Installation]()
- - [Configuration]()
- - [Features]()
-	 - [Vehicle Controls]()
-	 - [Chat Commands]()
-	 - [Misc Features]()
- - [Changelogs]()
- - [Support]()
+ - [[Home Page|Home]]
+ - [[Installation|Installation]]
+ - [[Configuration|Configuration]]
+ - [[Features|Features]]
+	 - [[Vehicle Controls|Features-Vehicle-Controls]]
+	 - [[Chat Commands|Features-Chat-Commands]]
+	 - [[Weapon Controls|Features-Weapon-Controls]]
+ - [[Changelogs|Changelogs]]
+ - [[Support|Support]]

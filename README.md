@@ -7,6 +7,7 @@ JayBasics is a simple all in one highly configurable FiveM script with features 
 - Custom Character Names
 - Proximity Chat
 - Customizable Chat Command Colours
+- Weapon Control System
 
 
 ## Full Feature List

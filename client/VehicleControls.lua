@@ -97,22 +97,21 @@ function engineCommand()
             if GetPedInVehicleSeat(vehicle, -1) == playerPed then
 
                 if vehicle ~= nil and vehicle ~= 0 and GetPedInVehicleSeat(vehicle, 0) then
-                    SetVehicleEngineOn(vehicle, (not GetIsVehicleEngineRunning(vehicle)), false, true)
-    
                     if GetIsVehicleEngineRunning(vehicle) then
-                        drawNotification(_("engineOff"))
+                        drawNotificationColour(_("engineOff"), _("redHex"))
                     else 
-                        drawNotification(_("engineOn"))
+                        drawNotificationColour(_("engineOn"), _("greenHex"))
                     end
                     
+                    SetVehicleEngineOn(vehicle, (not GetIsVehicleEngineRunning(vehicle)), false, true)
                 end
 
             else 
-                drawNotification(_("engineNotDriver"))
+                drawNotificationColour(_("engineNotDriver"), _("yellowHex"))
             end
 
         else
-            drawNotification(_("engineNotInCar"))
+            drawNotificationColour(_("engineNotInCar"), _("yellowHex"))
         end 
 
     end
@@ -136,16 +135,16 @@ function doorCommand(doorIndex)
                         if GetVehicleDoorAngleRatio(vehicle, doorIndex) > 0 then
                             SetVehicleDoorShut(vehicle, doorIndex, false)
                             if doorIndex == 4 or doorIndex == 5 then
-                                drawNotification(_("closed", translateDoorIndex(doorIndex))) 
+                                drawNotificationColour(_("closed", translateDoorIndex(doorIndex)), _("redHex")) 
                             else 
-                                drawNotification(_("closed", translateDoorIndex(doorIndex) .. " Door")) 
+                                drawNotificationColour(_("closed", translateDoorIndex(doorIndex) .. " Door"), _("redHex")) 
                             end
                         else
                             SetVehicleDoorOpen(vehicle, doorIndex, false, false)
                             if doorIndex == 4 or doorIndex == 5 then
-                                drawNotification(_("opened", translateDoorIndex(doorIndex))) 
+                                drawNotificationColour(_("opened", translateDoorIndex(doorIndex)), _("greenHex")) 
                             else 
-                                drawNotification(_("opened", translateDoorIndex(doorIndex) .. " Door")) 
+                                drawNotificationColour(_("opened", translateDoorIndex(doorIndex) .. " Door"), _("greenHex")) 
                             end
                         end
     
@@ -153,17 +152,17 @@ function doorCommand(doorIndex)
     
                 else
                     if doorIndex == 4 or doorIndex == 5 then
-                        drawNotification(_("notDriverTrunkHood"))
+                        drawNotificationColour(_("notDriverTrunkHood"), _("yellowHex"))
                     else 
-                        drawNotification(_("notDriverDoor"))
+                        drawNotificationColour(_("notDriverDoor"), _("yellowHex"))
                     end
                 end
 
             else 
                 if doorIndex == 4 or doorIndex == 5 then
-                    drawNotification(_("doorDoesNotExist", translateDoorIndex(doorIndex))) 
+                    drawNotificationColour(_("doorDoesNotExist", translateDoorIndex(doorIndex)), _("yellowHex")) 
                 else 
-                    drawNotification(_("doorDoesNotExist", translateDoorIndex(doorIndex) .. " Door")) 
+                    drawNotificationColour(_("doorDoesNotExist", translateDoorIndex(doorIndex) .. " Door"), _("yellowHex")) 
                 end
             end
 
@@ -183,24 +182,24 @@ function doorCommand(doorIndex)
                         if GetVehicleDoorAngleRatio(vehicle, doorIndex) > 0 then
                             SetVehicleDoorShut(vehicle, doorIndex, false)
                             if doorIndex == 4 or doorIndex == 5 then
-                                drawNotification(_("closed", translateDoorIndex(doorIndex))) 
+                                drawNotificationColour(_("closed", translateDoorIndex(doorIndex)), _("redHex")) 
                             else 
-                                drawNotification(_("closed", translateDoorIndex(doorIndex) .. " Door")) 
+                                drawNotificationColour(_("closed", translateDoorIndex(doorIndex) .. " Door"), _("redHex")) 
                             end
                         else
                             SetVehicleDoorOpen(vehicle, doorIndex, false, false)
                             if doorIndex == 4 or doorIndex == 5 then
-                                drawNotification(_("opened", translateDoorIndex(doorIndex))) 
+                                drawNotificationColour(_("opened", translateDoorIndex(doorIndex)), _("greenHex")) 
                             else 
-                                drawNotification(_("opened", translateDoorIndex(doorIndex) .. " Door")) 
+                                drawNotificationColour(_("opened", translateDoorIndex(doorIndex) .. " Door"), _("greenHex")) 
                             end
                         end
 
                     else 
                         if doorIndex == 4 or doorIndex == 5 then
-                            drawNotification(_("doorDoesNotExist", translateDoorIndex(doorIndex))) 
+                            drawNotificationColour(_("doorDoesNotExist", translateDoorIndex(doorIndex)), _("yellowHex")) 
                         else 
-                            drawNotification(_("doorDoesNotExist", translateDoorIndex(doorIndex) .. " Door")) 
+                            drawNotificationColour(_("doorDoesNotExist", translateDoorIndex(doorIndex) .. " Door"), _("yellowHex")) 
                         end
                     end
 
@@ -210,12 +209,12 @@ function doorCommand(doorIndex)
 
                 if DoesEntityExist(vehicleInRange) then
                     if doorIndex == 4 then
-                        drawNotification(_("tooFarHood"))
+                        drawNotificationColour(_("tooFarHood"), _("yellowHex"))
                     else 
-                        drawNotification(_("tooFarDoor"))
+                        drawNotificationColour(_("tooFarDoor"), _("yellowHex"))
                     end
                 else 
-                    drawNotification(_("notNearCar"))
+                    drawNotificationColour(_("notNearCar"), _("yellowHex"))
                 end
 
             end
@@ -245,11 +244,11 @@ function windowCommand(windowIndex)
                     if vehicle ~= nil then
 
                         if isVehicleWindowOpen(vehicle, windowIndex) then
-                            drawNotification(_("opened", translateWindowIndex(windowIndex) .. " Window")) 
+                            drawNotificationColour(_("opened", translateWindowIndex(windowIndex) .. " Window"), _("greenHex")) 
                             setWindowData(vehicle, windowIndex)
                             RollDownWindow(vehicle, windowIndex)
                         elseif not isVehicleWindowOpen(vehicle, windowIndex) then
-                            drawNotification(_("closed", translateWindowIndex(windowIndex) .. " Window")) 
+                            drawNotificationColour(_("closed", translateWindowIndex(windowIndex) .. " Window"), _("redHex")) 
                             setWindowData(vehicle, windowIndex)
                             RollUpWindow(vehicle, windowIndex)
                         end
@@ -257,11 +256,11 @@ function windowCommand(windowIndex)
                     end
     
                 else
-                    drawNotification(_("cantReachWindow"))
+                    drawNotificationColour(_("cantReachWindow"), _("yellowHex"))
                 end
 
             else 
-                drawNotification(_("windowDoesNotExist", translateDoorIndex(doorIndex) .. " Window")) 
+                drawNotificationColour(_("windowDoesNotExist", translateDoorIndex(doorIndex) .. " Window"), _("yellowHex")) 
             end
 
         end

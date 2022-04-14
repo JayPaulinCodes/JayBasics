@@ -1,4 +1,4 @@
-### Door System
+## Door System
 
 The JayBasics door system aims to be as realistic as possible. One of the ways we do this is restricting which doors you can open while sitting in the car to the ones you realistically would be able to reach.
 
@@ -14,7 +14,7 @@ I've drawn a diagram outlining the doors you can open for each seat of the car y
 ![DoorSystemDiagram](https://i.imgur.com/p9o3Wku.png)
 
 
-### Window System
+## Window System
 
 Just as with the door system we aim to be as realistic as possible. One of the ways we do this is restricting which windows you can open while sitting in the car to the ones you realistically would be able to interact with.
 
