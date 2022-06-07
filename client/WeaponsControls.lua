@@ -67,7 +67,8 @@ if CONFIG["WeaponControls"]["Enable"] then
     if CONFIG["WeaponControls"]["EnableTaserLaserSight"] then
         RegisterCommand("tasersight", function(source, args, rawCommands)
             taserSight_Enabled = not taserSight_Enabled
-            if taserSight_Enabled then
+            currentWeapon = getPedCurrentWeaponObject()
+            if taserSight_Enabled and currentWeapon.Category == "GROUP_STUNGUN" then
                 drawNotificationColour(_("laserSightEnabled"), _("greenHex"))
             else
                 drawNotificationColour(_("laserSightDisabled"), _("redHex"))
@@ -173,14 +174,35 @@ if CONFIG["WeaponControls"]["Enable"] then
                     HideHudComponentThisFrame(14)
                 end
 
-                -- Handle showing the icon
-                if doesWeaponHaveSafety(playerWeaponObject) or doesWeaponHaveFiringModes(playerWeaponObject) then
-                    showWeaponIcon()
-                else
-                    hideWeaponIcon()
-                end
+                Citizen.Wait(0)
+            end
+
+        end
+    end)
+
+    Citizen.CreateThread(function() 
+        local player = PlayerId()
+        local playerPed = GetPlayerPed(-1)
+        local playerPedId = PlayerPedId()
+
+        if isPedRealAndAlive(playerPed) then
+
+            while true do
+                playerWeaponObject = getPedCurrentWeaponObject()
     
                 if IsPedArmed(playerPed, 4) then
+
+                    -- Handle showing the icon
+                    if doesWeaponHaveSafety(playerWeaponObject) or doesWeaponHaveFiringModes(playerWeaponObject) then
+                        showWeaponIcon()
+                        if not doesWeaponHaveFiringModes(playerWeaponObject) then
+                            setWeaponIcon("standard")
+                            WeaponFireMode = 0
+                        end
+                    else
+                        hideWeaponIcon()
+                    end
+
                     -- Handle while safety is enabled
                     if WeaponSafety then
                         DisablePlayerFiring(player, true)
