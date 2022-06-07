@@ -1,3 +1,16 @@
+## Version 0.2.2
+
+| **Release** 	| **Beta 0.2.2** 	|
+|---	|:---:	|
+| **Version** 	| 0.2.2 	|
+| **Release Date** 	| 06/06/2022 	|
+| **Release Type** 	| Beta Release Patch 	|
+
+#### Changes
+➖ [Issue #4] Fixed weapon fire mode not working with certain weapons
+➖ [Issue #3] Fixed being able to enable and disable taser laser while not equiped with a taser
+➖ [Issue #5] Fixed fire mode staying when switching to a weapon without fire modes
+
 ## Version 0.2.1
 
 | **Release** 	| **Beta 0.2.1** 	|
