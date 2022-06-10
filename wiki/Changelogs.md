@@ -1,3 +1,20 @@
+## Version 0.3.0
+
+| **Release** 	| **Beta 0.3.0** 	|
+|---	|:---:	|
+| **Version** 	| 0.3.0 	|
+| **Release Date** 	| DD/MM/YYYY 	|
+| **Release Type** 	| Beta Minor Content Update 	|
+
+#### Additions
+➕ Added customizable Discord rich presence
+
+#### Removals
+✖️ Removed
+
+#### Changes
+➖ Changed
+
 ## Version 0.2.2
 
 | **Release** 	| **Beta 0.2.2** 	|
