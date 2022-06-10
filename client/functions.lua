@@ -780,14 +780,25 @@ end
 function doesWeaponHaveFiringModes(weaponObject)
     local playerPed = GetPlayerPed(-1)
 
+
     if not isPedRealAndAlive(playerPed) then 
         return false 
     else 
-        for hash, weapon in ipairs(AutomaticWeapons) do
-            if weapon.Hash == weaponObject.Hash then
+
+        for weapon = 1, #AutomaticWeapons do
+            -- print("=-=-=-=-=", weapon)
+            -- print(AutomaticWeapons)
+            -- print(#AutomaticWeapons, weapon, (AutomaticWeapons[weapon].Hash == weaponObject.Hash), AutomaticWeapons[weapon].Hash, weaponObject.Hash)
+            if AutomaticWeapons[weapon].Hash == weaponObject.Hash then
                 return true
             end
         end
+
+        -- for hash, weapon in ipairs(AutomaticWeapons) do
+        --     -- print(hash, weapon)
+        --     -- print((weapon.Hash == weaponObject.Hash), weapon.Hash, weaponObject.Hash)
+            
+        -- end
         return false    
     end
     
