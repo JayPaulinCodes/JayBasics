@@ -1120,3 +1120,11 @@ function getAreaNameFromZone()
 
     return Location
 end
+
+
+--[[
+    TODO: Document Function
+]]
+function getPlayerNameFromServer(params)
+    
+end

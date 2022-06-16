@@ -2,6 +2,9 @@ Vehicles = {}
 PlayerLicense = nil
 PlayerName = nil
 WeaponSafety = false
+Requests = {
+    PlayerName = nil
+}
 --[[
     0 = Standard (No Modification)
     1 = Single Shot
@@ -148,6 +151,29 @@ Citizen.CreateThread(function()
         )
     end
 
+    if CONFIG["Jail"]["Enabled"] and CONFIG["Jail"]["SendMessageOnJail"] then
+        --[[
+            ARGS:
+            0 - Name
+            1 - Length
+            2 - Jail Name
+        ]]
+        TriggerEvent("chat:addTemplate", 
+            "Jay:Basics:judgeSentence", 
+            "<img src='https://i.imgur.com/iqQZ90a.png' height='16' style='border-radius: 5px'> <b style='color: #000000'>JUDGE SENTENCE</b>: {0} has been sentenced to {1} months in {2}."
+        )
+    end
+
+    if CONFIG["Jail"]["Enabled"] and CONFIG["Jail"]["SendMessageOnRelease"] then
+        --[[
+            ARGS: N/A
+        ]]
+        TriggerEvent("chat:addTemplate", 
+            "Jay:Basics:wardenRelease", 
+            "<b style='color: #4165B4'>WARDEN</b>: Your jail sentence has elapsed, your a free man once again. I'm sure we will be seeing you again soon."
+        )
+    end
+
 end)
 
 RegisterNetEvent("Jay:Basics:setPlayerName")
@@ -170,4 +196,12 @@ AddEventHandler("Jay:Basics:setPlayerLicense", function(license)
     PlayerLicense = license
 end)
 
+-- RegisterNetEvent("Jay:Basics:PTPRequest:PlayerName")
+-- AddEventHandler("Jay:Basics:PTPRequest:PlayerName", function(source, name) 
+--     Requests["PlayerName"] = name
+-- end)
 
+RegisterNetEvent("Jay:Basics:PTPRequest:PlayerName:Results")
+AddEventHandler("Jay:Basics:PTPRequest:PlayerName:Results", function(name) 
+    Requests["PlayerName"] = name
+end)
