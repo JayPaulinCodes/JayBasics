@@ -286,36 +286,63 @@ This is a list of weapons from the `weapons.lua` file in the common folder of th
 ## Discord Presence
 
 ### `CONFIG["DiscordPresence"]["Enable"]`
+This controls the whole DiscordPresence section of the script.
+- While set to `true` DiscordPresence will be enabled
+- While set to `false` DiscordPresence will not be enabled
 
 ### `CONFIG["DiscordPresence"]["RefreshRate"]`
+This is the interval in milliseconds at which the DiscordPresence will refresh, by default it is set to `10000`.
+This values does not need to be extremely low.
 
 ### `CONFIG["DiscordPresence"]["DiscordAppId"]`
+[See Docs](../../../wiki/Features-Discord-Presence#setup)
 
 ### `CONFIG["DiscordPresence"]["LargeIcon"]["AssetName"]`
+[See Docs](../../../wiki/Features-Discord-Presence#setup)
 
 ### `CONFIG["DiscordPresence"]["LargeIcon"]["HoverText"]`
+[See Docs](../../../wiki/Features-Discord-Presence#setup)
 
 ### `CONFIG["DiscordPresence"]["SmallIcon"]["Enabled"]`
+[See Docs](../../../wiki/Features-Discord-Presence#setup)
 
 ### `CONFIG["DiscordPresence"]["SmallIcon"]["AssetName"]`
+[See Docs](../../../wiki/Features-Discord-Presence#setup)
 
 ### `CONFIG["DiscordPresence"]["SmallIcon"]["HoverText"]`
+[See Docs](../../../wiki/Features-Discord-Presence#setup)
 
 ### `CONFIG["DiscordPresence"]["Buttons"]["Button1"]["Enabled"]`
+This controls if there is a button #1 to display
+- While set to `true` Button #1 will be enabled
+- While set to `false` Button #1 will be disabled
 
 ### `CONFIG["DiscordPresence"]["Buttons"]["Button1"]["Text"]`
+This iswhere you configure the text which is displayed on the button.
 
 ### `CONFIG["DiscordPresence"]["Buttons"]["Button1"]["URL"]`
+The URL to send the user to on button click.
+Use the following in the url to connect to your fivem server `fivem://connect/YourServerIPHere:30120`
+NOTE: this has to start with "fivem://connect/" or "https://"
 
 ### `CONFIG["DiscordPresence"]["Buttons"]["Button2"]["Enabled"]`
+This controls if there is a button #2 to display
+- While set to `true` Button #2 will be enabled
+- While set to `false` Button #2 will be disabled
 
 ### `CONFIG["DiscordPresence"]["Buttons"]["Button2"]["Text"]`
+This iswhere you configure the text which is displayed on the button.
 
 ### `CONFIG["DiscordPresence"]["Buttons"]["Button2"]["URL"]`
+The URL to send the user to on button click.
+Use the following in the url to connect to your fivem server `fivem://connect/YourServerIPHere:30120`
+*NOTE: this has to start with "fivem://connect/" or "https://"*
 
 ### `CONFIG["DiscordPresence"]["StatusMessage"]["UseDefault"]`
+Determines if we will use the default codded status messages.
 
 ### `CONFIG["DiscordPresence"]["StatusMessage"]["CustomMessage"]`
+The status message to use when [`CONFIG["DiscordPresence"]["StatusMessage"]["UseDefault"]`](../../../wiki/Configuration#configdiscordpresencestatusmessageusedefault) is set to false.
 
 ---
 

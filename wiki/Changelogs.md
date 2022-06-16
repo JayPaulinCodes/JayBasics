@@ -9,12 +9,6 @@
 #### Additions
 ➕ Added customizable Discord rich presence
 
-#### Removals
-✖️ Removed
-
-#### Changes
-➖ Changed
-
 ## Version 0.2.2
 
 | **Release** 	| **Beta 0.2.2** 	|
