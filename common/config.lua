@@ -233,3 +233,139 @@ CONFIG["WeaponControls"]["ReticleWeapons"] = {
     WEAPONS["1785463520"], -- WEAPON_MARKSMANRIFLE_MK2
     WEAPONS["-952879014"], -- WEAPON_MARKSMANRIFLE
 }
+
+
+
+--      ##############################
+--      ##     DISCORD PRESENCE     ##
+--      ##############################
+
+--[[
+    This is the discord presence section of the script, 
+    it controls creating a custom presence for user's 
+    while their on your server.
+]]
+CONFIG["DiscordPresence"] = {}
+
+--[[
+    This is the master switch for this module of the script, 
+    if this is false all commands in this seciton will not operate
+]]
+CONFIG["DiscordPresence"]["Enable"] = true
+
+--[[
+    How fast to refresh the presence in miliseconds
+]]
+CONFIG["DiscordPresence"]["RefreshRate"] = 10000
+
+--[[
+    The discord application id
+]]
+CONFIG["DiscordPresence"]["DiscordAppId"] = 123456789
+
+--[[
+    This line is for config strucure, for the love 
+    of god do not change this line.
+]]
+CONFIG["DiscordPresence"]["LargeIcon"] = {}
+
+--[[
+    This is the asset name of the large 
+    icon on your discord application
+]]
+CONFIG["DiscordPresence"]["LargeIcon"]["AssetName"] = "logo1"
+
+--[[
+    This is the text to display when the 
+    large icon is hovered 
+]]
+CONFIG["DiscordPresence"]["LargeIcon"]["HoverText"] = "Hover Text"
+
+--[[
+    Do you want a small icon to be displayed?
+]]
+CONFIG["DiscordPresence"]["SmallIcon"]["Enabled"] = true
+
+--[[
+    This is the asset name of the small 
+    icon on your discord application
+]]
+CONFIG["DiscordPresence"]["SmallIcon"]["AssetName"] = "logo2"
+
+--[[
+    This is the text to display when the 
+    small icon is hovered 
+]]
+CONFIG["DiscordPresence"]["SmallIcon"]["HoverText"] = "Hover Text"
+
+--[[
+    This line is for config strucure, for the love 
+    of god do not change this line.
+]]
+CONFIG["DiscordPresence"]["Buttons"] = {}
+
+--[[
+    This line is for config strucure, for the love 
+    of god do not change this line.
+]]
+CONFIG["DiscordPresence"]["Buttons"]["Button1"] = {}
+
+--[[
+    Is the Top Button enabled?
+]]
+CONFIG["DiscordPresence"]["Buttons"]["Button1"]["Enabled"] = true
+
+--[[
+    The text to display on the top button
+]]
+CONFIG["DiscordPresence"]["Buttons"]["Button1"]["Text"] = "Join Our Discord!"
+
+--[[
+    The URL to send the user to on button click.
+    Use the following in the url field bellow to 
+    connect to your fivem server fivem://connect/YourServerIPHere:30120
+    NOTE: this has to start with "fivem://connect/" or "https://"
+]]
+CONFIG["DiscordPresence"]["Buttons"]["Button1"]["URL"] = "https://discord.gg/"
+
+--[[
+    This line is for config strucure, for the love 
+    of god do not change this line.
+]]
+CONFIG["DiscordPresence"]["Buttons"]["Button2"] = {}
+
+--[[
+    Is the Bottom Button enabled?
+]]
+CONFIG["DiscordPresence"]["Buttons"]["Button2"]["Enabled"] = true
+
+--[[
+    The text to display on the bottom button
+]]
+CONFIG["DiscordPresence"]["Buttons"]["Button2"]["Text"] = "Connect To The Server!"
+
+--[[
+    The URL to send the user to on button click.
+    Use the following in the url field bellow to 
+    connect to your fivem server fivem://connect/YourServerIPHere:30120
+    NOTE: this has to start with "fivem://connect/" or "https://"
+]]
+CONFIG["DiscordPresence"]["Buttons"]["Button2"]["URL"] = "fivem://connect/"
+
+--[[
+    This line is for config strucure, for the love 
+    of god do not change this line.
+]]
+CONFIG["DiscordPresence"]["StatusMessage"] = {}
+
+--[[
+    Use the default codded status messages
+]]
+CONFIG["DiscordPresence"]["StatusMessage"]["UseDefault"] = true
+
+--[[
+    The status message to use when 
+    CONFIG["DiscordPresence"]["StatusMessage"]["UseDefault"] 
+    is set to false.
+]]
+CONFIG["DiscordPresence"]["StatusMessage"]["CustomMessage"] = "Custom Status Message"

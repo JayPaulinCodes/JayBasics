@@ -1,3 +1,14 @@
+## Version 0.3.0
+
+| **Release** 	| **Beta 0.3.0** 	|
+|---	|:---:	|
+| **Version** 	| 0.3.0 	|
+| **Release Date** 	| 16/06/2022 |
+| **Release Type** 	| Beta Content Update 	|
+
+#### Additions
+➕ Added customizable Discord rich presence
+
 ## Version 0.2.2
 
 | **Release** 	| **Beta 0.2.2** 	|
