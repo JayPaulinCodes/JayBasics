@@ -1115,7 +1115,7 @@ function getAreaNameFromZone()
     elseif      ZoneLabel == "ZP_ORT"   then Location = "Los Santos"
     elseif      ZoneLabel == "ZQ_UAR"   then Location = "Blaine County"
     elseif      ZoneLabel == "PROL"     then Location = "Prologue / North Yankton"
-    elseif      ZoneLabel == "ISHeist"  then Location = "Cayo Perico
+    elseif      ZoneLabel == "ISHeist"  then Location = "Cayo Perico"
     end
 
     return Location
