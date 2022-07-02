@@ -195,13 +195,3 @@ RegisterNetEvent("Jay:Basics:setPlayerLicense")
 AddEventHandler("Jay:Basics:setPlayerLicense", function(license) 
     PlayerLicense = license
 end)
-
--- RegisterNetEvent("Jay:Basics:PTPRequest:PlayerName")
--- AddEventHandler("Jay:Basics:PTPRequest:PlayerName", function(source, name) 
---     Requests["PlayerName"] = name
--- end)
-
-RegisterNetEvent("Jay:Basics:PTPRequest:PlayerName:Results")
-AddEventHandler("Jay:Basics:PTPRequest:PlayerName:Results", function(name) 
-    Requests["PlayerName"] = name
-end)
