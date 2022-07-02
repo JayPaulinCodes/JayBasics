@@ -3,7 +3,7 @@
 | **Release** 	| **Beta 0.3.0** 	|
 |---	|:---:	|
 | **Version** 	| 0.3.0 	|
-| **Release Date** 	| 16/06/2022 |
+| **Release Date** 	| 02/07/2022 |
 | **Release Type** 	| Beta Content Update 	|
 
 #### Additions
