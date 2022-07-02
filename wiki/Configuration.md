@@ -43,17 +43,17 @@
 | [264](../common/config.lua#L264) | [`CONFIG["DiscordPresence"]["DiscordAppId"]`](../../../wiki/Configuration#configdiscordpresencediscordappid) | Number | `123456789` |
 | [276](../common/config.lua#L276) | [`CONFIG["DiscordPresence"]["LargeIcon"]["AssetName"]`](../../../wiki/Configuration#configdiscordpresencelargeiconassetname) | String | `"logo1"` |
 | [282](../common/config.lua#L282) | [`CONFIG["DiscordPresence"]["LargeIcon"]["HoverText"]`](../../../wiki/Configuration#configdiscordpresencelargeiconhovertext) | String | `"Hover Text"` |
-| [287](../common/config.lua#L287) | [`CONFIG["DiscordPresence"]["SmallIcon"]["Enabled"]`](../../../wiki/Configuration#configdiscordpresencesmalliconenabled) | Boolean | `true` |
-| [293](../common/config.lua#L293) | [`CONFIG["DiscordPresence"]["SmallIcon"]["AssetName"]`](../../../wiki/Configuration#configdiscordpresencesmalliconassetname) | String | `"logo2"` |
-| [299](../common/config.lua#L299) | [`CONFIG["DiscordPresence"]["SmallIcon"]["HoverText"]`](../../../wiki/Configuration#configdiscordpresencesmalliconhovername) | String | `"Hover Text"` |
-| [316](../common/config.lua#L316) | [`CONFIG["DiscordPresence"]["Buttons"]["Button1"]["Enabled"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton1enabled) | Boolean | `true` |
-| [321](../common/config.lua#L321) | [`CONFIG["DiscordPresence"]["Buttons"]["Button1"]["Text"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton1text) | String | `"Join Our Discord!"` |
-| [329](../common/config.lua#L329) | [`CONFIG["DiscordPresence"]["Buttons"]["Button1"]["URL"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton1url) | String | `"https://discord.gg/"` |
-| [340](../common/config.lua#L340) | [`CONFIG["DiscordPresence"]["Buttons"]["Button2"]["Enabled"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton2enabled) | Boolean | `true` |
-| [345](../common/config.lua#L345) | [`CONFIG["DiscordPresence"]["Buttons"]["Button2"]["Text"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton2text) | String | `"Connect To The Server!"` |
-| [353](../common/config.lua#L353) | [`CONFIG["DiscordPresence"]["Buttons"]["Button2"]["URL"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton2url) | String | `"fivem://connect/"` |
-| [364](../common/config.lua#L364) | [`CONFIG["DiscordPresence"]["StatusMessage"]["UseDefault"]`](../../../wiki/Configuration#configdiscordpresencestatusmessageusedefault) | Boolean | `true` |
-| [371](../common/config.lua#L371) | [`CONFIG["DiscordPresence"]["StatusMessage"]["CustomMessage"]`](../../../wiki/Configuration#configdiscordpresencestatusmessagecustommessage) | String | `"Custom Status Message"` |
+| [293](../common/config.lua#L293) | [`CONFIG["DiscordPresence"]["SmallIcon"]["Enabled"]`](../../../wiki/Configuration#configdiscordpresencesmalliconenabled) | Boolean | `true` |
+| [299](../common/config.lua#L299) | [`CONFIG["DiscordPresence"]["SmallIcon"]["AssetName"]`](../../../wiki/Configuration#configdiscordpresencesmalliconassetname) | String | `"logo2"` |
+| [305](../common/config.lua#L305) | [`CONFIG["DiscordPresence"]["SmallIcon"]["HoverText"]`](../../../wiki/Configuration#configdiscordpresencesmalliconhovername) | String | `"Hover Text"` |
+| [322](../common/config.lua#L322) | [`CONFIG["DiscordPresence"]["Buttons"]["Button1"]["Enabled"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton1enabled) | Boolean | `true` |
+| [327](../common/config.lua#L327) | [`CONFIG["DiscordPresence"]["Buttons"]["Button1"]["Text"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton1text) | String | `"Join Our Discord!"` |
+| [335](../common/config.lua#L335) | [`CONFIG["DiscordPresence"]["Buttons"]["Button1"]["URL"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton1url) | String | `"https://discord.gg/"` |
+| [346](../common/config.lua#L346) | [`CONFIG["DiscordPresence"]["Buttons"]["Button2"]["Enabled"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton2enabled) | Boolean | `true` |
+| [351](../common/config.lua#L351) | [`CONFIG["DiscordPresence"]["Buttons"]["Button2"]["Text"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton2text) | String | `"Connect To The Server!"` |
+| [359](../common/config.lua#L359) | [`CONFIG["DiscordPresence"]["Buttons"]["Button2"]["URL"]`](../../../wiki/Configuration#configdiscordpresencebuttonsbutton2url) | String | `"fivem://connect/"` |
+| [370](../common/config.lua#L370) | [`CONFIG["DiscordPresence"]["StatusMessage"]["UseDefault"]`](../../../wiki/Configuration#configdiscordpresencestatusmessageusedefault) | Boolean | `true` |
+| [377](../common/config.lua#L377) | [`CONFIG["DiscordPresence"]["StatusMessage"]["CustomMessage"]`](../../../wiki/Configuration#configdiscordpresencestatusmessagecustommessage) | String | `"Custom Status Message"` |
 
 
 

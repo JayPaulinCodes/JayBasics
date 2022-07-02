@@ -282,6 +282,12 @@ CONFIG["DiscordPresence"]["LargeIcon"]["AssetName"] = "logo1"
 CONFIG["DiscordPresence"]["LargeIcon"]["HoverText"] = "Hover Text"
 
 --[[
+    This line is for config strucure, for the love 
+    of god do not change this line.
+]]
+CONFIG["DiscordPresence"]["SmallIcon"] = {}
+
+--[[
     Do you want a small icon to be displayed?
 ]]
 CONFIG["DiscordPresence"]["SmallIcon"]["Enabled"] = true
