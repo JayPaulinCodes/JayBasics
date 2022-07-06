@@ -147,7 +147,16 @@ window.addEventListener("message", function (event) {
                 // Check if it is already open
                 // if its open, end
                 // if its closed open
-                if (!MASTER_DIV.classList.contains("anim-fadeIn")) openClose();
+                if (!MASTER_DIV.classList.contains("anim-fadeIn")) { 
+                    openClose();
+                
+                    $.post(
+                        URL + "notifyGUIOpen", 
+                        JSON.stringify({
+                            type: "notifyGUIOpen"
+                        })
+                    );
+                }
                 break;
 
             case "close":
@@ -155,7 +164,16 @@ window.addEventListener("message", function (event) {
                 // Check if it is already closed
                 // if its closed, end
                 // if its opened close
-                if (!MASTER_DIV.classList.contains("anim-fadeOut")) openClose();
+                if (!MASTER_DIV.classList.contains("anim-fadeOut")) {
+                    openClose();
+                
+                    $.post(
+                        URL + "notifyGUIClose", 
+                        JSON.stringify({
+                            type: "notifyGUIClose"
+                        })
+                    );
+                }
                 break;
         
             default:
@@ -164,7 +182,20 @@ window.addEventListener("message", function (event) {
     }
 });
 
-
+document.addEventListener("keyup", (event) => {
+    if (event.key === "Escape") {
+        if (!MASTER_DIV.classList.contains("anim-fadeOut")) {
+            openClose();
+        
+            $.post(
+                URL + "notifyGUIClose", 
+                JSON.stringify({
+                    type: "notifyGUIClose"
+                })
+            );
+        }
+    }
+});
 
 // document.getElementById("buttonopen").addEventListener("click", function (event) {
 //     const dddd = {

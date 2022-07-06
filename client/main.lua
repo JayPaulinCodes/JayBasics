@@ -2,6 +2,8 @@ Vehicles = {}
 PlayerLicense = nil
 PlayerName = nil
 WeaponSafety = false
+PlayerLastHeldWeapon = nil
+IsJailGUIOpen = false
 Requests = {
     PlayerName = nil
 }

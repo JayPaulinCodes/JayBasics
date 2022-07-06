@@ -30,7 +30,8 @@ client_scripts {
     "client/functions.lua",
     "client/VehicleControls.lua",
     "client/ChatCommands.lua",
-    "client/WeaponsControls.lua"
+    "client/WeaponsControls.lua",
+    "client/Jail.lua"
 } 
 
 server_scripts {
@@ -38,5 +39,6 @@ server_scripts {
     "server/main.lua",
     "server/functions.lua",
     "server/VehicleControls.lua",
-    "server/ChatCommands.lua"
+    "server/ChatCommands.lua",
+    "server/Jail.lua"
 } 

@@ -1125,6 +1125,62 @@ end
 --[[
     TODO: Document Function
 ]]
-function getPlayerNameFromServer(params)
-    
+function getPlayersInRadius(range)
+    local playersInRange = {}
+    local players = GetPlayers()
+    local player = PlayerId()
+    local playerPed = GetPlayerPed(-1)
+    local playerPedId = PlayerPedId()
+    local playerCoords = GetEntityCoords(playerPed, 0)
+
+
+    local ply = GetPlayerPed(-1)
+    local plyCoords = GetEntityCoords(ply, 0)
+
+    for index, value in ipairs(players) do
+        local targetPlayer = GetPlayerPed(value)
+        
+        if(target ~= playerPed) then
+            local targetCoords = GetEntityCoords(targetPlayer, 0)
+            local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
+            if (distanceFromPlayer < range) then
+                table.insert(playersInRange, targetPlayer)
+            end
+        end
+    end
+
+    return playersInRange
+end
+
+function ExtractIdentifiers(target)
+    local identifiers = {
+        steam = "",
+        ip = "",
+        discord = "",
+        license = "",
+        xbl = "",
+        live = ""
+    }
+
+    --Loop over all identifiers
+    for i = 0, GetNumPlayerIdentifiers(target) - 1 do
+        local id = GetPlayerIdentifier(target, i)
+
+        --Convert it to a nice table.
+        if string.find(id, "steam") then
+            identifiers.steam = id
+        elseif string.find(id, "ip") then
+            identifiers.ip = id
+        elseif string.find(id, "discord") then
+            identifiers.discord = id
+        elseif string.find(id, "license") then
+            identifiers.license = id
+        elseif string.find(id, "xbl") then
+            identifiers.xbl = id
+        elseif string.find(id, "live") then
+            identifiers.live = id
+        end
+    end
+
+    return identifiers
 end
