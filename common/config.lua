@@ -394,6 +394,12 @@ CONFIG["Jail"] = {}
 ]]
 CONFIG["Jail"]["Enable"] = true
 
+--[[
+
+]]
 CONFIG["Jail"]["SendMessageOnJail"] = true
 
+--[[
+    
+]]
 CONFIG["Jail"]["SendMessageOnRelease"] = true

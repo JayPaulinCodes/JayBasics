@@ -103,7 +103,7 @@ SUBMIT_BUTTON.onclick = function() {
         // console.log(URL + "submitJailRequest"+ 
         // JSON.stringify({
         //     targetName: selected.name,
-        //     targetSteamId: selected.steamId,
+        //     targetId: selected.id,
         //     reason: reason,
         //     length: length
         // }))
@@ -111,7 +111,7 @@ SUBMIT_BUTTON.onclick = function() {
             URL + "submitJailRequest", 
             JSON.stringify({
                 targetName: selected.name,
-                targetSteamId: selected.steamId,
+                targetId: selected.id,
                 reason: reason,
                 length: length
             })
@@ -128,7 +128,7 @@ SUBMIT_BUTTON.onclick = function() {
  *     module = "jail-gui",
  *     data = {
  *         nearbyPlayers = [
- *             { name = "", steamId = "" }
+ *             { name = "", id = "" }
  *         ],
  *         action = "open" || "close"
  *     }
@@ -202,10 +202,10 @@ document.addEventListener("keyup", (event) => {
 //         module: "jail-gui",
 //         data: {
 //             nearbyPlayers: [
-//                 { name: "Harris J. 3C-34", steamId: "1" },
-//                 { name: "Jacob P. 3C-276", steamId: "2" },
-//                 { name: "Jalen F. 3C-25", steamId: "3" },
-//                 { name: "Andrew C. 3C-10", steamId: "4" }
+//                 { name: "Harris J. 3C-34", id: "1" },
+//                 { name: "Jacob P. 3C-276", id: "2" },
+//                 { name: "Jalen F. 3C-25", id: "3" },
+//                 { name: "Andrew C. 3C-10", id: "4" }
 //             ],
 //             action: "open"
 //         }
@@ -243,10 +243,10 @@ document.addEventListener("keyup", (event) => {
 //         module: "jail-gui",
 //         data: {
 //             nearbyPlayers: [
-//                 { name: "Harris J. 3C-34", steamId: "1" },
-//                 { name: "Jacob P. 3C-276", steamId: "2" },
-//                 { name: "Jalen F. 3C-25", steamId: "3" },
-//                 { name: "Andrew C. 3C-10", steamId: "4" }
+//                 { name: "Harris J. 3C-34", id: "1" },
+//                 { name: "Jacob P. 3C-276", id: "2" },
+//                 { name: "Jalen F. 3C-25", id: "3" },
+//                 { name: "Andrew C. 3C-10", id: "4" }
 //             ],
 //             action: "close"
 //         }

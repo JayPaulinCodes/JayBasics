@@ -1,4 +1,6 @@
-Citizen.CreateThread(function()
+if CONFIG["Jail"]["Enabled"] then
+
+    TriggerEvent("chat:addSuggestion", "/jail", _U("jailCommandSug"))
 
     RegisterNetEvent("Jay:Basics:openJailGUI")
     AddEventHandler("Jay:Basics:openJailGUI", function(id)
@@ -11,55 +13,45 @@ Citizen.CreateThread(function()
 
         for key, value in ipairs(playersNearby) do
             print(key, value)
-            targetIds = ExtractIdentifiers(value)
 
             table.insert(closePlayers, {
-                name = "",
-                steamId = ""
+                name = GetPlayerName(value),
+                id = GetPlayerServerId(value)
             })
         end
-
-        -- local originPlayer = GetPlayerFromServerId(id)
-        -- local originPlayerPed = GetPlayerPed(originPlayer)
-        -- local distance = GetDistanceBetweenCoords(GetEntityCoords(playerPed), GetEntityCoords(originPlayerPed), true)
-        -- local distanceFormated = math.floor(distance + 0.5)
 
         SendNUIMessage({
             module = "jail-gui",
             data = {
-                nearbyPlayers = {
-
-                },
+                nearbyPlayers = closePlayers,
                 action = "open"
             }
         })
 
-
-
     end)
 
-end)
+    -- Where the HTML/JS tells us that the gui was opened
+    RegisterNUICallback("notifyGUIOpen", function(data)
+        IsJailGUIOpen = true
+        SetNuiFocus(true, true)
+    end)
+
+    -- Where the HTML/JS tells us that the gui was closed
+    RegisterNUICallback("notifyGUIClose", function()
+        IsJailGUIOpen = false
+        SetNuiFocus(false, false)
+    end)
 
 
--- Jail Request
-RegisterNUICallback("submitJailRequest", function(data)
-    
-end)
+    -- Jail Request from HTML
+    RegisterNUICallback("submitJailRequest", function(data)
+        local targetName = data.targetName
+        local targetId = data.targetId
+        local reason = data.reason
+        local length = data.length
 
--- Where the HTML/JS tells us that the gui was opened
-RegisterNUICallback("notifyGUIOpen", function(data)
-    IsJailGUIOpen = true
-    SetNuiFocus(true, true)
-end)
+        local targetPlayer = GetPlayerFromServerId(id)
+        
+    end)
 
--- Where the HTML/JS tells us that the gui was closed
-RegisterNUICallback("notifyGUIClose", function()
-    IsJailGUIOpen = false
-    SetNuiFocus(false, false)
-end)
-
-
-function handleJailRequest()
-    
-    local targetPlayer = GetPlayerFromServerId(id)
 end

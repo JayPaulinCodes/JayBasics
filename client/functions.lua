@@ -1184,3 +1184,73 @@ function ExtractIdentifiers(target)
 
     return identifiers
 end
+
+
+--[[
+    TODO: Document Function
+]]
+function teleportPlayer(location) 
+
+    if not IsPlayerSwitchInProgress() then
+        SwitchOutPlayer(PlayerPedId(), 0, 1)
+    end
+
+    -- Wait for the switch cam to be in the sky in the 'waiting' state (5).
+    while GetPlayerSwitchState() ~= 5 do
+        Citizen.Wait(0)
+        clearScreen()
+    end
+
+    clearScreen()
+    Citizen.Wait(0)
+    DoScreenFadeOut(0)
+
+    ClearScreen()
+    Citizen.Wait(0)
+    ClearScreen()
+    DoScreenFadeIn(500)
+    while not IsScreenFadedIn() do
+        Citizen.Wait(0)
+        ClearScreen()
+    end
+    
+    local timer = GetGameTimer()
+    
+    while true do
+        ClearScreen()
+        Citizen.Wait(0)
+        
+        -- wait 5 seconds before starting the switch to the player
+        if GetGameTimer() - timer > 5000 then
+            
+            -- Switch to the player.
+            SwitchInPlayer(PlayerPedId())
+            
+            ClearScreen()
+            
+            -- Wait for the player switch to be completed (state 12).
+            while GetPlayerSwitchState() ~= 12 do
+                Citizen.Wait(0)
+                ClearScreen()
+            end
+            -- Stop the infinite loop.
+            break
+        end
+    end
+    
+    -- Reset the draw origin, just in case (allowing HUD elements to re-appear correctly)
+    ClearDrawOrigin()
+
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function clearScreen() 
+    SetCloudHatOpacity(cloudOpacity)
+    HideHudAndRadarThisFrame()
+    
+    -- nice hack to 'hide' HUD elements from other resources/scripts. kinda buggy though.
+    SetDrawOrigin(0.0, 0.0, 0.0, 0)
+end

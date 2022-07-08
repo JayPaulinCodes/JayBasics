@@ -19,6 +19,7 @@ files {
 }
 
 shared_scripts{
+    "common/jails.lua",
     "common/weapons.lua",
     "common/locales.lua",
     "locales/*.lua",
