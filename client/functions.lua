@@ -1125,7 +1125,7 @@ end
 --[[
     TODO: Document Function
 ]]
-function getPlayersInRadius(range)
+function getPlayersInRadius(range, excludePlayer)
     local playersInRange = {}
     local players = GetPlayers()
     local player = PlayerId()
@@ -1140,7 +1140,9 @@ function getPlayersInRadius(range)
     for index, value in ipairs(players) do
         local targetPlayer = GetPlayerPed(value)
         
-        if(target ~= playerPed) then
+
+
+        if(excludePlayer and target ~= playerPed) then
             local targetCoords = GetEntityCoords(targetPlayer, 0)
             local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
             if (distanceFromPlayer < range) then
@@ -1152,6 +1154,10 @@ function getPlayersInRadius(range)
     return playersInRange
 end
 
+
+--[[
+    TODO: Document Function
+]]
 function ExtractIdentifiers(target)
     local identifiers = {
         steam = "",
@@ -1183,4 +1189,84 @@ function ExtractIdentifiers(target)
     end
 
     return identifiers
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function getClosestStation() 
+    local stations = JAILS
+    local playerCoords = GetEntityCoords(PlayerPedId(), 0)
+
+    for key, station in pairs(stations) do
+        local currentDistance = Vdist(station.centerPointCoords, playerCoords)
+
+        if currentDistance ~= nil then
+            stations[key]["distanceFromPD"] = currentDistance
+        end
+    end
+
+    local lowestValueIndex = 0
+    local lowestValue = false
+    
+    for key, station in pairs(stations) do
+        if not lowestValue or station.distanceFromPD < lowestValue then
+            lowestValueIndex = key
+            lowestValue = station.distanceFromPD
+        end
+    end
+    
+    return JAILS[lowestValueIndex]
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function switchPlayerToCoords(destinationCoords, adjustCoordsToGround)  
+    local destination = nil
+    local player = {}
+    local player.pedId = PlayerPedId()
+    local player.heading = GetEntityHeading(playerPedId)
+    local player.cam = {}
+    local player.cam.pitch = GetGameplayCamRelativePitch()
+    local player.cam.heading = GetGameplayCamRelativeHeading()
+
+    if adjustCoordsToGround then
+        destination = vector3(destinationCoords.x, destinationCoords.y, destinationCoords.z + 1.0)
+    else
+        destination = vector3(destinationCoords.x, destinationCoords.y, destinationCoords.z)
+    end
+
+    RequestCollisionAtCoord(destination)
+
+    --[[
+        use flag of 0 for normal
+        use switch type of 2 for 1 step out from player
+    ]]
+    SwitchOutPlayer(player.pedId, 0, 2)
+
+    FreezeEntityPosition(player.pedId, true)
+
+    Citizen.Wait(500)
+
+    NetworkFadeOutEntity(player.pedId, true, true)
+
+    while GetPlayerSwitchState() ~= 5 and GetPlayerSwitchState() ~= 3 do
+        Citizen.Wait(0)
+    end
+
+    SetEntityCoordsNoOffset(player.pedId, destination)
+
+    SetEntityHeading(player.pedId, player.heading)
+
+    SetGameplayCamRelativePitch(player.cam.Pitch, 1.0)
+
+    SetGameplayCamRelativeHeading(player.cam.heading)
+
+    FreezeEntityPosition(player.pedId, false)
+
+    NetworkFadeInEntity(player.pedId, false)
+
 end

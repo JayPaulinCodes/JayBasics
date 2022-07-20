@@ -10,3 +10,22 @@ Citizen.CreateThread(function ()
     end, false)
 
 end)
+
+RegisterServerEvent("Jay:Basics:jailPlayerRequest")
+AddEventHandler("Jay:Basics:jailPlayerRequest", function(NUIData, jail) 
+    
+    TriggerClientEvent('Jay:Basics:jailPlayer"', NUIData.id, jail, NUIData.length)
+
+    TriggerClientEvent('chat:addMessage', -1, 
+        { 
+            templateId = 'Jay:Basics:judgeSentence',
+            multiline = true, 
+            args = { 
+                NUIData.targetName,
+                math.floor((NUIData.length / 10)),
+                jail.name,
+                NUIData.reason
+            } 
+        } 
+    )
+end)

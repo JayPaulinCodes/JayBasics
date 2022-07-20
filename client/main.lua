@@ -4,6 +4,7 @@ PlayerName = nil
 WeaponSafety = false
 PlayerLastHeldWeapon = nil
 IsJailGUIOpen = false
+IsPlayerJailed = false
 Requests = {
     PlayerName = nil
 }
@@ -159,10 +160,11 @@ Citizen.CreateThread(function()
             0 - Name
             1 - Length
             2 - Jail Name
+            3 - Reason
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:judgeSentence", 
-            "<img src='https://i.imgur.com/iqQZ90a.png' height='16' style='border-radius: 5px'> <b style='color: #000000'>JUDGE SENTENCE</b>: {0} has been sentenced to {1} months in {2}."
+            "<img src='https://i.imgur.com/iqQZ90a.png' height='16' style='border-radius: 5px'> <b style='color: #000000'>JUDGE SENTENCE</b>: {0} has been sentenced to {1} months in {2} for {3}."
         )
     end
 
