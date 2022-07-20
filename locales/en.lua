@@ -23,6 +23,7 @@ LOCALES["en"] = {
     ["satefyCommandSug"] = "toggles the safety on your weapon",
     ["firemodeCommandSug"] = "cycles through the fire modes",
     ["tasersightCommandSug"] = "toggles the laser sight for tasers",
+    ["jailCommandSug"] = "jail a player",
 
     -- Vehicle Control Module
     ["frontDriver"] = "Front Driver",

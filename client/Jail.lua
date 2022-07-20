@@ -1,4 +1,6 @@
-Citizen.CreateThread(function()
+if CONFIG["Jail"]["Enabled"] then
+
+    TriggerEvent("chat:addSuggestion", "/jail", _U("jailCommandSug"))
 
     RegisterNetEvent("Jay:Basics:openJailGUI")
     AddEventHandler("Jay:Basics:openJailGUI", function(id)
@@ -19,11 +21,6 @@ Citizen.CreateThread(function()
             })
         end
 
-        -- local originPlayer = GetPlayerFromServerId(id)
-        -- local originPlayerPed = GetPlayerPed(originPlayer)
-        -- local distance = GetDistanceBetweenCoords(GetEntityCoords(playerPed), GetEntityCoords(originPlayerPed), true)
-        -- local distanceFormated = math.floor(distance + 0.5)
-
         SendNUIMessage({
             module = "jail-gui",
             data = {
@@ -34,8 +31,11 @@ Citizen.CreateThread(function()
 
     end)
 
-end)
-
+    -- Where the HTML/JS tells us that the gui was opened
+    RegisterNUICallback("notifyGUIOpen", function(data)
+        IsJailGUIOpen = true
+        SetNuiFocus(true, true)
+    end)
 
 -- Jail Request
 RegisterNUICallback("submitJailRequest", function(data)
@@ -68,17 +68,13 @@ AddEventHandler("Jay:Basics:jailPlayer", function(jail, length)
 
 end)
 
--- Where the HTML/JS tells us that the gui was opened
-RegisterNUICallback("notifyGUIOpen", function(data)
-    IsJailGUIOpen = true
-    SetNuiFocus(true, true)
-end)
 
--- Where the HTML/JS tells us that the gui was closed
-RegisterNUICallback("notifyGUIClose", function()
-    IsJailGUIOpen = false
-    SetNuiFocus(false, false)
-end)
+    -- Jail Request from HTML
+    RegisterNUICallback("submitJailRequest", function(data)
+        local targetName = data.targetName
+        local targetId = data.targetId
+        local reason = data.reason
+        local length = data.length
 
 -- LOOPS
 Citizen.CreateThread(function()
