@@ -394,6 +394,14 @@ CONFIG["Jail"] = {}
 ]]
 CONFIG["Jail"]["Enable"] = true
 
+--[[
+    This controls wether or not a chat message is sent when someone
+    is sent to jail
+]]
 CONFIG["Jail"]["SendMessageOnJail"] = true
 
+--[[
+    This controls wether or not a chat message is sent to the 
+    jailed player when they are released
+]]
 CONFIG["Jail"]["SendMessageOnRelease"] = true
