@@ -20,6 +20,8 @@ files {
 
 shared_scripts{
     "common/weapons.lua",
+    "common/jails.lua",
+    "common/controls.lua",
     "common/locales.lua",
     "locales/*.lua",
     "common/config.lua",
