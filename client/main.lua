@@ -1,4 +1,6 @@
 Vehicles = {}
+PlayersList = {}
+ClientPlayerNames = {}
 PlayerLicense = nil
 PlayerName = nil
 WeaponSafety = false
@@ -43,6 +45,7 @@ AutomaticWeapons = {
 }
 
 Citizen.CreateThread(function()
+
     while true do
         if PlayerLicense == nil then
             TriggerServerEvent("Jay:Basics:setPlayerLicense")
@@ -55,6 +58,25 @@ Citizen.CreateThread(function()
     end
 
 end)
+
+Citizen.CreateThread(function()
+
+    while true do
+        TriggerServerEvent("Jay:Basics:syncPlayerList")
+        Citizen.Wait(30000)
+    end
+
+end)
+
+Citizen.CreateThread(function()
+
+    while true do
+        TriggerServerEvent("Jay:Basics:syncPlayerNames")
+        Citizen.Wait(30000)
+    end
+
+end)
+
 
 
 --      ############################
@@ -154,7 +176,7 @@ Citizen.CreateThread(function()
         )
     end
 
-    if CONFIG["Jail"]["Enabled"] and CONFIG["Jail"]["SendMessageOnJail"] then
+    if CONFIG["Jail"]["Enable"] and CONFIG["Jail"]["SendMessageOnJail"] then
         --[[
             ARGS:
             0 - Name
@@ -168,7 +190,7 @@ Citizen.CreateThread(function()
         )
     end
 
-    if CONFIG["Jail"]["Enabled"] and CONFIG["Jail"]["SendMessageOnRelease"] then
+    if CONFIG["Jail"]["Enable"] and CONFIG["Jail"]["SendMessageOnRelease"] then
         --[[
             ARGS: N/A
         ]]
@@ -198,4 +220,14 @@ end)
 RegisterNetEvent("Jay:Basics:setPlayerLicense")
 AddEventHandler("Jay:Basics:setPlayerLicense", function(license) 
     PlayerLicense = license
+end)
+
+RegisterNetEvent("Jay:Basics:syncClientPlayerList")
+AddEventHandler("Jay:Basics:syncClientPlayerList", function(players) 
+    PlayersList = players
+end)
+
+RegisterNetEvent("Jay:Basics:syncClientPlayerNames")
+AddEventHandler("Jay:Basics:syncClientPlayerNames", function(playerNames) 
+    ClientPlayerNames = playerNames
 end)

@@ -1126,29 +1126,56 @@ end
     TODO: Document Function
 ]]
 function getPlayersInRadius(range, excludePlayer)
+    TriggerServerEvent("Jay:Basics:syncPlayerList")
+    
     local playersInRange = {}
-    local players = GetPlayers()
+    -- local players = GetPlayers()
+    local players = PlayersList
     local player = PlayerId()
     local playerPed = GetPlayerPed(-1)
     local playerPedId = PlayerPedId()
-    local playerCoords = GetEntityCoords(playerPed, 0)
-
+    local playerCoords = GetEntityCoords(playerPedId, 0)
 
     local ply = GetPlayerPed(-1)
     local plyCoords = GetEntityCoords(ply, 0)
 
-    for index, value in ipairs(players) do
-        local targetPlayer = GetPlayerPed(value)
-        
+    for index, playerIdx in ipairs(players) do
+        local targetPlayerId = playerIdx
+        local targetPlayerPlayer = GetPlayerFromServerId(targetPlayerId)
+        local targetPlayerPed = GetPlayerPed(targetPlayerPlayer)
+        -- print(index, playerIdx, targetPlayerPed, playerPed, playerPedId)
 
+        -- if(excludePlayer and (target ~= playerPed)) then
+        --     local targetCoords = GetEntityCoords(targetPlayerPed, 0)
+        --     local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
+        --     if (distanceFromPlayer < range) then
+        --         table.insert(playersInRange, targetPlayerPed)
+        --     end
+        -- end
 
-        if(excludePlayer and target ~= playerPed) then
-            local targetCoords = GetEntityCoords(targetPlayer, 0)
-            local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
-            if (distanceFromPlayer < range) then
-                table.insert(playersInRange, targetPlayer)
+        if (excludePlayer) then
+            if(targetPlayerPed ~= playerPed) then
+                local targetCoords = GetEntityCoords(targetPlayerPed)
+                local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
+                
+                if (distanceFromPlayer < range) then
+                    table.insert(playersInRange, targetPlayerId)
+                end
+            end
+        else
+
+            if(targetPlayerPed ~= playerPed) then
+                local targetCoords = GetEntityCoords(targetPlayerPed)
+                local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
+                
+                if (distanceFromPlayer < range) then
+                    table.insert(playersInRange, targetPlayerId)
+                end
+            else
+                table.insert(playersInRange, targetPlayerId)
             end
         end
+
     end
 
     return playersInRange
@@ -1281,17 +1308,19 @@ function clearScreen()
     SetDrawOrigin(0.0, 0.0, 0.0, 0)
 end
 
+
 --[[
     TODO: Document Function
 ]]
 function switchPlayerToCoords(destinationCoords, adjustCoordsToGround)  
     local destination = nil
     local player = {}
-    local player.pedId = PlayerPedId()
-    local player.heading = GetEntityHeading(playerPedId)
-    local player.cam = {}
-    local player.cam.pitch = GetGameplayCamRelativePitch()
-    local player.cam.heading = GetGameplayCamRelativeHeading()
+    player.pedId = PlayerPedId()
+    player.heading = GetEntityHeading(playerPedId)
+    player.cam = {}
+    player.cam.pitch = GetGameplayCamRelativePitch()
+    player.cam.heading = GetGameplayCamRelativeHeading()
+
 
     if adjustCoordsToGround then
         destination = vector3(destinationCoords.x, destinationCoords.y, destinationCoords.z + 1.0)
@@ -1300,7 +1329,7 @@ function switchPlayerToCoords(destinationCoords, adjustCoordsToGround)
     end
 
     RequestCollisionAtCoord(destination)
-
+ 
     --[[
         use flag of 0 for normal
         use switch type of 2 for 1 step out from player
@@ -1311,9 +1340,23 @@ function switchPlayerToCoords(destinationCoords, adjustCoordsToGround)
 
     Citizen.Wait(500)
 
-    NetworkFadeOutEntity(player.pedId, true, true)
+    NetworkFadeOutEntity(player.pedId, false, true)
 
     while GetPlayerSwitchState() ~= 5 and GetPlayerSwitchState() ~= 3 do
+        Citizen.Wait(250)
+    end
+
+    SetEntityCoordsNoOffset(player.pedId, destination)
+
+    SetEntityHeading(player.pedId, player.heading)
+
+    Citizen.Wait(5000)
+
+    SwitchInPlayer(player.pedId)
+
+    RequestCollisionAtCoord(destination)
+    
+    while not HasCollisionLoadedAroundEntity(player.pedId) do
         Citizen.Wait(0)
     end
 
@@ -1322,11 +1365,11 @@ function switchPlayerToCoords(destinationCoords, adjustCoordsToGround)
     SetEntityHeading(player.pedId, player.heading)
 
     SetGameplayCamRelativePitch(player.cam.Pitch, 1.0)
-
+    
     SetGameplayCamRelativeHeading(player.cam.heading)
-
+    
     FreezeEntityPosition(player.pedId, false)
-
-    NetworkFadeInEntity(player.pedId, false)
-
+    
+    NetworkFadeInEntity(player.pedId, true)
+    
 end

@@ -1,4 +1,4 @@
-if CONFIG["Jail"]["Enabled"] then
+if CONFIG["Jail"]["Enable"] then
 
     Citizen.CreateThread(function ()
    
@@ -14,8 +14,11 @@ if CONFIG["Jail"]["Enabled"] then
 
     RegisterServerEvent("Jay:Basics:jailPlayerRequest")
     AddEventHandler("Jay:Basics:jailPlayerRequest", function(NUIData, jail) 
+
+        -- print(NUIData.targetName, math.floor((NUIData.length / 10)), jail.name, NUIData.reason)
+        -- print(NUIData.targetId)
         
-        TriggerClientEvent('Jay:Basics:jailPlayer"', NUIData.id, jail, NUIData.length)
+        TriggerClientEvent('Jay:Basics:jailPlayer', NUIData.targetId, jail, NUIData.length)
 
         TriggerClientEvent('chat:addMessage', -1, 
             { 

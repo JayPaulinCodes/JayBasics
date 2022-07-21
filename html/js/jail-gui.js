@@ -60,8 +60,6 @@ function openClose() {
             }
 
             PLAYER_LIST_MENU.appendChild(playerEntry_div);
-
-            console.log(PLAYER)
         }
     }
 }
@@ -107,6 +105,7 @@ SUBMIT_BUTTON.onclick = function() {
         //     reason: reason,
         //     length: length
         // }))
+
         $.post(
             URL + "submitJailRequest", 
             JSON.stringify({
@@ -118,6 +117,13 @@ SUBMIT_BUTTON.onclick = function() {
         );
 
         openClose();
+
+        $.post(
+            URL + "notifyGUIClose", 
+            JSON.stringify({
+                type: "notifyGUIClose"
+            })
+        );
     }
 
 }

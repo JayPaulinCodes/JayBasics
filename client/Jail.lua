@@ -1,9 +1,10 @@
-if CONFIG["Jail"]["Enabled"] then
+if CONFIG["Jail"]["Enable"] then
 
     TriggerEvent("chat:addSuggestion", "/jail", _U("jailCommandSug"))
 
     RegisterNetEvent("Jay:Basics:openJailGUI")
     AddEventHandler("Jay:Basics:openJailGUI", function(id)
+        TriggerServerEvent("Jay:Basics:syncPlayerNames")
         
         local player = PlayerId()
         local playerId = GetPlayerServerId(player)
@@ -11,13 +12,21 @@ if CONFIG["Jail"]["Enabled"] then
         local playersNearby = getPlayersInRadius(50, false)
         local closePlayers = {}
 
-        for key, value in ipairs(playersNearby) do
-            print(key, value)
-            targetServerId = GetPlayerServerId(value)
+        -- for key, value in ipairs(ClientPlayerNames) do
+        --     print("BSX: ", key, value)
+        -- end
+
+        for key, playerIdx in ipairs(playersNearby) do
+            local targetPlayerId = playerIdx
+            -- local targetPlayerPlayer = GetPlayerFromServerId(targetPlayerId)
+            -- local targetPlayerPed = GetPlayerPed(targetPlayerPlayer)
+            -- print(key, targetPlayerId, GetPlayerName(targetPlayerId), targetPlayerPlayer, GetPlayerName(targetPlayerPlayer), targetPlayerPed, GetPlayerName(targetPlayerPed))
+
+            -- print(key, playerIdx, targetPlayerId, ClientPlayerNames["SID_"..targetPlayerId])
 
             table.insert(closePlayers, {
-                name = GetPlayerName(targetServerId),
-                id = targetServerId
+                name = ClientPlayerNames["SID_"..targetPlayerId],
+                id = targetPlayerId
             })
         end
 
@@ -37,6 +46,12 @@ if CONFIG["Jail"]["Enabled"] then
         SetNuiFocus(true, true)
     end)
 
+    -- Where the HTML/JS tells us that the gui was closed
+    RegisterNUICallback("notifyGUIClose", function(data)
+        IsJailGUIOpen = false
+        SetNuiFocus(false, false)
+    end)
+
     -- Jail Request from HTML
     RegisterNUICallback("submitJailRequest", function(data)
         TriggerServerEvent("Jay:Basics:jailPlayerRequest", data, getClosestStation())
@@ -45,16 +60,20 @@ if CONFIG["Jail"]["Enabled"] then
     -- Jail Player
     RegisterNetEvent("Jay:Basics:jailPlayer")
     AddEventHandler("Jay:Basics:jailPlayer", function(jail, length) 
-        
+
         IsPlayerJailed = true
 
-        switchPlayerToCoords(jail.cellCoords)
+        switchPlayerToCoords(jail.cellCoords, true)
+
+        while GetPlayerSwitchState() ~= 12 do
+            Citizen.Wait(10)
+        end
 
         Citizen.SetTimeout(length * 1000, function()
 
             IsPlayerJailed = false
         
-            switchPlayerToCoords(jail.freedCoords)
+            switchPlayerToCoords(jail.freedCoords, true)
         
             TriggerEvent('chat:addMessage', 
                 { 
