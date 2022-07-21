@@ -4,7 +4,7 @@ games { "gta5" }
 author "JayPaulinCodes (https://github.com/JayPaulinCodes)"
 description "A simple all in one highly configurable FiveM script with tons of core and useful features for any server"
 
-version "0.3.0"
+version "0.3.1"
 
 ui_page "html/index.html"
 
@@ -19,7 +19,10 @@ files {
 }
 
 shared_scripts{
+    "common/jails.lua",
     "common/weapons.lua",
+    "common/jails.lua",
+    "common/controls.lua",
     "common/locales.lua",
     "locales/*.lua",
     "common/config.lua",
@@ -30,7 +33,8 @@ client_scripts {
     "client/functions.lua",
     "client/VehicleControls.lua",
     "client/ChatCommands.lua",
-    "client/WeaponsControls.lua"
+    "client/WeaponsControls.lua",
+    "client/Jail.lua"
 } 
 
 server_scripts {
@@ -38,5 +42,6 @@ server_scripts {
     "server/main.lua",
     "server/functions.lua",
     "server/VehicleControls.lua",
-    "server/ChatCommands.lua"
+    "server/ChatCommands.lua",
+    "server/Jail.lua"
 } 

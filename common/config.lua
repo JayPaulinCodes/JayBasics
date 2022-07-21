@@ -282,6 +282,12 @@ CONFIG["DiscordPresence"]["LargeIcon"]["AssetName"] = "logo1"
 CONFIG["DiscordPresence"]["LargeIcon"]["HoverText"] = "Hover Text"
 
 --[[
+    This line is for config strucure, for the love 
+    of god do not change this line.
+]]
+CONFIG["DiscordPresence"]["SmallIcon"] = {}
+
+--[[
     Do you want a small icon to be displayed?
 ]]
 CONFIG["DiscordPresence"]["SmallIcon"]["Enabled"] = true
@@ -369,3 +375,33 @@ CONFIG["DiscordPresence"]["StatusMessage"]["UseDefault"] = true
     is set to false.
 ]]
 CONFIG["DiscordPresence"]["StatusMessage"]["CustomMessage"] = "Custom Status Message"
+
+
+
+--      ###################
+--      ##     JAIL      ##
+--      ###################
+
+--[[
+    This is the section of the config where you can
+    customize and control the Jail feature
+]]
+CONFIG["Jail"] = {}
+
+--[[
+    This is the master switch for this module of the script, 
+    if this is false all commands in this seciton will not operate
+]]
+CONFIG["Jail"]["Enable"] = true
+
+--[[
+    This controls wether or not a chat message is sent when someone
+    is sent to jail
+]]
+CONFIG["Jail"]["SendMessageOnJail"] = true
+
+--[[
+    This controls wether or not a chat message is sent to the 
+    jailed player when they are released
+]]
+CONFIG["Jail"]["SendMessageOnRelease"] = true
