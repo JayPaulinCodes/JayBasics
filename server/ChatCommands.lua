@@ -28,6 +28,28 @@ Citizen.CreateThread(function()
     
     end
 
+    if CONFIG["ChatCommands"]["Enable"] and CONFIG["ChatCommands"]["oocCommand"] then
+    
+        RegisterCommand('ooc', function(source, args, user)
+            local _source = source
+            local name = getPlayerNameFromId(_source)
+            local message = table.concat(args, " ")
+    
+            TriggerClientEvent('chat:addMessage', -1, 
+                { 
+                    templateId = 'Jay:Basics:messageOOC', 
+                    multiline = true, 
+                    args = { 
+                        name,
+                        _source,
+                        message
+                    } 
+                }
+            )
+        end, false)
+    
+    end
+
     if CONFIG["ChatCommands"]["Enable"] and CONFIG["ChatCommands"]["meCommand"] then
     
         RegisterCommand('me', function(source, args, user)
