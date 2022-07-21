@@ -12,5 +12,6 @@ Here you will be able to find everything you need to know about JayBasics and ho
 	 - [[Chat Commands|Features-Chat-Commands]]
 	 - [[Weapon Controls|Features-Weapon-Controls]]
 	 - [[Discord Precense|Features-Discord-Presence]]
+	 - [[Jail|Features-Jail]]
  - [[Changelogs|Changelogs]]
  - [[Support|Support]]

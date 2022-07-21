@@ -1,5 +1,23 @@
 ## Version 0.3.0
 
+| **Release** 	| **Beta 0.3.1** 	|
+|---	|:---:	|
+| **Version** 	| 0.3.1 	|
+| **Release Date** 	| 21/07/2022 |
+| **Release Type** 	| Beta Content Update 	|
+
+#### Additions
+➕ Added Jail feature
+
+#### Changes
+➖ Fixed /ooc command (I guess somewhere along the way it got removed?)
+➖ Fixed some issues with the version checker
+➖ Fixed some issues resulting in the weapon icon not showing up at the proper times
+➖ Fixed a few typos in the Discord Presence back end and config
+
+
+## Version 0.3.0
+
 | **Release** 	| **Beta 0.3.0** 	|
 |---	|:---:	|
 | **Version** 	| 0.3.0 	|
