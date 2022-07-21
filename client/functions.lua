@@ -1115,8 +1115,261 @@ function getAreaNameFromZone()
     elseif      ZoneLabel == "ZP_ORT"   then Location = "Los Santos"
     elseif      ZoneLabel == "ZQ_UAR"   then Location = "Blaine County"
     elseif      ZoneLabel == "PROL"     then Location = "Prologue / North Yankton"
-    elseif      ZoneLabel == "ISHeist"  then Location = "Cayo Perico
+    elseif      ZoneLabel == "ISHeist"  then Location = "Cayo Perico"
     end
 
     return Location
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function getPlayersInRadius(range, excludePlayer)
+    TriggerServerEvent("Jay:Basics:syncPlayerList")
+    
+    local playersInRange = {}
+    -- local players = GetPlayers()
+    local players = PlayersList
+    local player = PlayerId()
+    local playerPed = GetPlayerPed(-1)
+    local playerPedId = PlayerPedId()
+    local playerCoords = GetEntityCoords(playerPedId, 0)
+
+    local ply = GetPlayerPed(-1)
+    local plyCoords = GetEntityCoords(ply, 0)
+
+    for index, playerIdx in ipairs(players) do
+        local targetPlayerId = playerIdx
+        local targetPlayerPlayer = GetPlayerFromServerId(targetPlayerId)
+        local targetPlayerPed = GetPlayerPed(targetPlayerPlayer)
+        -- print(index, playerIdx, targetPlayerPed, playerPed, playerPedId)
+
+        -- if(excludePlayer and (target ~= playerPed)) then
+        --     local targetCoords = GetEntityCoords(targetPlayerPed, 0)
+        --     local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
+        --     if (distanceFromPlayer < range) then
+        --         table.insert(playersInRange, targetPlayerPed)
+        --     end
+        -- end
+
+        if (excludePlayer) then
+            if(targetPlayerPed ~= playerPed) then
+                local targetCoords = GetEntityCoords(targetPlayerPed)
+                local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
+                
+                if (distanceFromPlayer < range) then
+                    table.insert(playersInRange, targetPlayerId)
+                end
+            end
+        else
+
+            if(targetPlayerPed ~= playerPed) then
+                local targetCoords = GetEntityCoords(targetPlayerPed)
+                local distanceFromPlayer = GetDistanceBetweenCoords(targetCoords['x'], targetCoords['y'], targetCoords['z'], playerCoords['x'], playerCoords['y'], playerCoords['z'], true)
+                
+                if (distanceFromPlayer < range) then
+                    table.insert(playersInRange, targetPlayerId)
+                end
+            else
+                table.insert(playersInRange, targetPlayerId)
+            end
+        end
+
+    end
+
+    return playersInRange
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function ExtractIdentifiers(target)
+    local identifiers = {
+        steam = "",
+        ip = "",
+        discord = "",
+        license = "",
+        xbl = "",
+        live = ""
+    }
+
+    --Loop over all identifiers
+    for i = 0, GetNumPlayerIdentifiers(target) - 1 do
+        local id = GetPlayerIdentifier(target, i)
+
+        --Convert it to a nice table.
+        if string.find(id, "steam") then
+            identifiers.steam = id
+        elseif string.find(id, "ip") then
+            identifiers.ip = id
+        elseif string.find(id, "discord") then
+            identifiers.discord = id
+        elseif string.find(id, "license") then
+            identifiers.license = id
+        elseif string.find(id, "xbl") then
+            identifiers.xbl = id
+        elseif string.find(id, "live") then
+            identifiers.live = id
+        end
+    end
+
+    return identifiers
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function getClosestStation() 
+    local stations = JAILS
+    local playerCoords = GetEntityCoords(PlayerPedId(), 0)
+
+    for key, station in pairs(stations) do
+        local currentDistance = Vdist(station.centerPointCoords, playerCoords)
+
+        if currentDistance ~= nil then
+            stations[key]["distanceFromPD"] = currentDistance
+        end
+    end
+
+    local lowestValueIndex = 0
+    local lowestValue = false
+    
+    for key, station in pairs(stations) do
+        if not lowestValue or station.distanceFromPD < lowestValue then
+            lowestValueIndex = key
+            lowestValue = station.distanceFromPD
+        end
+    end
+    
+    return JAILS[lowestValueIndex]
+end
+
+function teleportPlayer(location) 
+
+    if not IsPlayerSwitchInProgress() then
+        SwitchOutPlayer(PlayerPedId(), 0, 1)
+    end
+
+    -- Wait for the switch cam to be in the sky in the 'waiting' state (5).
+    while GetPlayerSwitchState() ~= 5 do
+        Citizen.Wait(0)
+        clearScreen()
+    end
+
+    clearScreen()
+    Citizen.Wait(0)
+    DoScreenFadeOut(0)
+
+    ClearScreen()
+    Citizen.Wait(0)
+    ClearScreen()
+    DoScreenFadeIn(500)
+    while not IsScreenFadedIn() do
+        Citizen.Wait(0)
+        ClearScreen()
+    end
+    
+    local timer = GetGameTimer()
+    
+    while true do
+        ClearScreen()
+        Citizen.Wait(0)
+        
+        -- wait 5 seconds before starting the switch to the player
+        if GetGameTimer() - timer > 5000 then
+            
+            -- Switch to the player.
+            SwitchInPlayer(PlayerPedId())
+            
+            ClearScreen()
+            
+            -- Wait for the player switch to be completed (state 12).
+            while GetPlayerSwitchState() ~= 12 do
+                Citizen.Wait(0)
+                ClearScreen()
+            end
+            -- Stop the infinite loop.
+            break
+        end
+    end
+    
+    -- Reset the draw origin, just in case (allowing HUD elements to re-appear correctly)
+    ClearDrawOrigin()
+end
+
+function clearScreen() 
+    SetCloudHatOpacity(cloudOpacity)
+    HideHudAndRadarThisFrame()
+    
+    -- nice hack to 'hide' HUD elements from other resources/scripts. kinda buggy though.
+    SetDrawOrigin(0.0, 0.0, 0.0, 0)
+end
+
+
+--[[
+    TODO: Document Function
+]]
+function switchPlayerToCoords(destinationCoords, adjustCoordsToGround)  
+    local destination = nil
+    local player = {}
+    player.pedId = PlayerPedId()
+    player.heading = GetEntityHeading(playerPedId)
+    player.cam = {}
+    player.cam.pitch = GetGameplayCamRelativePitch()
+    player.cam.heading = GetGameplayCamRelativeHeading()
+
+
+    if adjustCoordsToGround then
+        destination = vector3(destinationCoords.x, destinationCoords.y, destinationCoords.z + 1.0)
+    else
+        destination = vector3(destinationCoords.x, destinationCoords.y, destinationCoords.z)
+    end
+
+    RequestCollisionAtCoord(destination)
+ 
+    --[[
+        use flag of 0 for normal
+        use switch type of 2 for 1 step out from player
+    ]]
+    SwitchOutPlayer(player.pedId, 0, 2)
+
+    FreezeEntityPosition(player.pedId, true)
+
+    Citizen.Wait(500)
+
+    NetworkFadeOutEntity(player.pedId, false, true)
+
+    while GetPlayerSwitchState() ~= 5 and GetPlayerSwitchState() ~= 3 do
+        Citizen.Wait(250)
+    end
+
+    SetEntityCoordsNoOffset(player.pedId, destination)
+
+    SetEntityHeading(player.pedId, player.heading)
+
+    Citizen.Wait(5000)
+
+    SwitchInPlayer(player.pedId)
+
+    RequestCollisionAtCoord(destination)
+    
+    while not HasCollisionLoadedAroundEntity(player.pedId) do
+        Citizen.Wait(0)
+    end
+
+    SetEntityCoordsNoOffset(player.pedId, destination)
+
+    SetEntityHeading(player.pedId, player.heading)
+
+    SetGameplayCamRelativePitch(player.cam.Pitch, 1.0)
+    
+    SetGameplayCamRelativeHeading(player.cam.heading)
+    
+    FreezeEntityPosition(player.pedId, false)
+    
+    NetworkFadeInEntity(player.pedId, true)
+    
 end

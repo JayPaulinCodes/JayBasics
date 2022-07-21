@@ -180,6 +180,43 @@ if CONFIG["WeaponControls"]["Enable"] then
         end
     end)
 
+    Citizen.CreateThread(function ()
+        
+        local player = PlayerId()
+        local playerPed = GetPlayerPed(-1)
+        local playerPedId = PlayerPedId()
+
+        if isPedRealAndAlive(playerPed) then
+
+            while true do
+                playerWeaponObject = getPedCurrentWeaponObject()
+                CurrentPlayerWeaponObject = GetSelectedPedWeapon(playerPed)
+                LastPlayerWeaponObject = PlayerLastHeldWeapon
+
+                -- Handle showing the icon
+                if LastPlayerWeaponObject ~= CurrentPlayerWeaponObject then
+
+                    if doesWeaponHaveSafety(playerWeaponObject) or doesWeaponHaveFiringModes(playerWeaponObject) then
+                        showWeaponIcon()
+                        if not doesWeaponHaveFiringModes(playerWeaponObject) then
+                            setWeaponIcon("standard")
+                            WeaponFireMode = 0
+                        end
+                    else
+                        hideWeaponIcon()
+                    end
+
+                end
+
+                PlayerLastHeldWeapon = CurrentPlayerWeaponObject
+
+                Citizen.Wait(500)
+            end
+
+        end
+
+    end)
+
     Citizen.CreateThread(function() 
         local player = PlayerId()
         local playerPed = GetPlayerPed(-1)
@@ -191,17 +228,6 @@ if CONFIG["WeaponControls"]["Enable"] then
                 playerWeaponObject = getPedCurrentWeaponObject()
     
                 if IsPedArmed(playerPed, 4) then
-
-                    -- Handle showing the icon
-                    if doesWeaponHaveSafety(playerWeaponObject) or doesWeaponHaveFiringModes(playerWeaponObject) then
-                        showWeaponIcon()
-                        if not doesWeaponHaveFiringModes(playerWeaponObject) then
-                            setWeaponIcon("standard")
-                            WeaponFireMode = 0
-                        end
-                    else
-                        hideWeaponIcon()
-                    end
 
                     -- Handle while safety is enabled
                     if WeaponSafety then

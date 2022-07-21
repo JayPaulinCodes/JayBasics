@@ -2,6 +2,8 @@
 - [[Vehicle Controls|Features-Vehicle-Controls]]
 - [[Chat Commands|Features-Chat-Commands]]
 - [[Weapon Controls|Features-Weapon-Controls]]
+- [[Discord Precense|Features-Discord-Presence]]
+- [[Jail|Features-Jail]]
 
 ---
 ## Commands

@@ -16,6 +16,10 @@
         <script src="js/weapon-state-icon.js"></script>
         <link rel="stylesheet" href="css/weapon-state-icon.css">
 
+        <!-- JailGUI Style and Script -->
+        <script src="js/jail-gui.js" defer></script>
+        <link rel="stylesheet" href="css/jail-gui.css">
+
     </head>
 
     <body>
@@ -23,5 +27,32 @@
         <div class="weapon-state">
             <img id="weapon-state-img" src="imgs/WeaponIcon_Standard.png">
         </div>
+
+        <!-- Jail Menu -->
+        <div class="jail-gui anim-fadeOut" id="jail-gui">
+
+            <div class="form-group">
+                <span id="jail-gui-player-list">
+                    <nav id="jail-gui-dropdown">
+                        <menu>
+                            <div id="players-list">
+                                <a class="player-selected" id="player-selected">Select A Player</a>
+                                <menu id="player-list-menu">
+                                    <!-- <div><a class="player-item" id="player-item">➥ Harris J. 3C-34</a></div>
+                                    <div><a class="player-item" id="player-item">➥ Jacob P. 3C-276</a></div>
+                                    <div><a class="player-item" id="player-item">➥ Jalen F. 3C-25</a></div>
+                                    <div><a class="player-item" id="player-item">➥ Andrew C. 3C-10</a></div> -->
+                                </menu>
+                            </div>
+                        </menu>
+                    </nav>
+                </span>
+                <input class="form-field" type="text" id="jail-input-reason" placeholder="Jail Reason">
+                <input class="form-field" type="number" id="jail-input-time" placeholder="Length">
+                <span id="submit-jail"><p>Submit</p></span>
+            </div>
+
+        </div>
+        
     </body>
 </html>

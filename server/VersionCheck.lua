@@ -50,6 +50,9 @@ Citizen.CreateThread( function()
         for i, message in ipairs(printArrayName) do
             print(message)
         end
+
+        Citizen.CreateThread(loopNameMessage())
+
         -- print(installedVersion, githubVersion, (installedVersion < githubVersion))
     end
 
@@ -67,3 +70,9 @@ Citizen.CreateThread( function()
     end
 
 end)
+
+
+function loopNameMessage()
+    print("^1INVALID RESOURCE NAME!!! ^3The script will not work if the name is not exactly \"JayBasics\", please change the resource name and restart your server!")
+    Citizen.Wait(10000)
+end

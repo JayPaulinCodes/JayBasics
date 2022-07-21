@@ -1,7 +1,15 @@
 Vehicles = {}
+PlayersList = {}
+ClientPlayerNames = {}
 PlayerLicense = nil
 PlayerName = nil
 WeaponSafety = false
+PlayerLastHeldWeapon = nil
+IsJailGUIOpen = false
+IsPlayerJailed = false
+Requests = {
+    PlayerName = nil
+}
 --[[
     0 = Standard (No Modification)
     1 = Single Shot
@@ -37,6 +45,7 @@ AutomaticWeapons = {
 }
 
 Citizen.CreateThread(function()
+
     while true do
         if PlayerLicense == nil then
             TriggerServerEvent("Jay:Basics:setPlayerLicense")
@@ -49,6 +58,25 @@ Citizen.CreateThread(function()
     end
 
 end)
+
+Citizen.CreateThread(function()
+
+    while true do
+        TriggerServerEvent("Jay:Basics:syncPlayerList")
+        Citizen.Wait(30000)
+    end
+
+end)
+
+Citizen.CreateThread(function()
+
+    while true do
+        TriggerServerEvent("Jay:Basics:syncPlayerNames")
+        Citizen.Wait(30000)
+    end
+
+end)
+
 
 
 --      ############################
@@ -148,6 +176,30 @@ Citizen.CreateThread(function()
         )
     end
 
+    if CONFIG["Jail"]["Enable"] and CONFIG["Jail"]["SendMessageOnJail"] then
+        --[[
+            ARGS:
+            0 - Name
+            1 - Length
+            2 - Jail Name
+            3 - Reason
+        ]]
+        TriggerEvent("chat:addTemplate", 
+            "Jay:Basics:judgeSentence", 
+            "<img src='https://i.imgur.com/iqQZ90a.png' height='16' style='border-radius: 5px'> <b style='color: #000000'>JUDGE SENTENCE</b>: {0} has been sentenced to {1} months in {2} for {3}."
+        )
+    end
+
+    if CONFIG["Jail"]["Enable"] and CONFIG["Jail"]["SendMessageOnRelease"] then
+        --[[
+            ARGS: N/A
+        ]]
+        TriggerEvent("chat:addTemplate", 
+            "Jay:Basics:wardenRelease", 
+            "<b style='color: #4165B4'>WARDEN</b>: Your jail sentence has elapsed, your a free man once again. I'm sure we will be seeing you again soon."
+        )
+    end
+
 end)
 
 RegisterNetEvent("Jay:Basics:setPlayerName")
@@ -170,4 +222,12 @@ AddEventHandler("Jay:Basics:setPlayerLicense", function(license)
     PlayerLicense = license
 end)
 
+RegisterNetEvent("Jay:Basics:syncClientPlayerList")
+AddEventHandler("Jay:Basics:syncClientPlayerList", function(players) 
+    PlayersList = players
+end)
 
+RegisterNetEvent("Jay:Basics:syncClientPlayerNames")
+AddEventHandler("Jay:Basics:syncClientPlayerNames", function(playerNames) 
+    ClientPlayerNames = playerNames
+end)

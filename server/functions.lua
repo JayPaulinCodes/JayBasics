@@ -1,6 +1,14 @@
 function getPlayerNameFromId(Id) 
+    local name = nil
     local license = GetPlayerIdentifier(Id, 2)
-    return PlayerNames[license]
+
+    if PlayerNames[license] ~= nil then
+        name = PlayerNames[license]
+    else
+        name = GetPlayerName(Id)
+    end
+
+    return name
 end
 
 function checkNameAndLicense(source) 
