@@ -848,12 +848,18 @@ end
     TODO: Document Function
 ]]
 function showWeaponIcon() 
-    SendNUIMessage({
-        module = "weapon-state",
-        data = {
-            type = "showWeaponStateImg"
-        }
-    })
+
+    if IsPauseMenuActive() then
+        hideWeaponIcon()
+    else
+        SendNUIMessage({
+            module = "weapon-state",
+            data = {
+                type = "showWeaponStateImg"
+            }
+        })
+    end
+
 end
 
 
