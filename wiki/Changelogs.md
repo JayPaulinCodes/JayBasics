@@ -1,3 +1,16 @@
+## Version 0.3.2
+
+| **Release** 	| **Beta 0.3.2** 	|
+|---	|:---:	|
+| **Version** 	| 0.3.2 	|
+| **Release Date** 	| 22/07/2022 	|
+| **Release Type** 	| Beta Hotfix 	|
+
+#### Changes
+➖ Fixed Discord Presence not working (Issue #22)
+➖ Fixed Weapon Icon Presistance (Issues #9)
+
+
 ## Version 0.3.1
 
 | **Release** 	| **Beta 0.3.1** 	|

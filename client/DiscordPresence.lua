@@ -31,7 +31,7 @@ if CONFIG["DiscordPresence"]["Enable"] then
             end
 
             -- Status Message
-            if CONFIG["ChatCommands"]["UseDefaultNames"] == false then
+            if CONFIG["ChatCommands"]["UseDefaultNames"] == false and PlayerName ~= nil then
                 SetRichPresence("Patroling As " .. PlayerName .. " In " .. getAreaNameFromZone())
             else
                 SetRichPresence("Patroling In " .. getAreaNameFromZone())
