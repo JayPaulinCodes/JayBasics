@@ -32,9 +32,9 @@ if CONFIG["DiscordPresence"]["Enable"] then
 
             -- Status Message
             if CONFIG["ChatCommands"]["UseDefaultNames"] == false and PlayerName ~= nil then
-                SetRichPresence("Patroling As " .. PlayerName .. " In " .. getAreaNameFromZone())
+                SetRichPresence(_U("statusMessageWithName", PlayerName, getAreaNameFromZone()))
             else
-                SetRichPresence("Patroling In " .. getAreaNameFromZone())
+                SetRichPresence(_U("statusMessageWithoutName", getAreaNameFromZone()))
             end
     
             Citizen.Wait(CFG["RefreshRate"])

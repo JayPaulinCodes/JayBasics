@@ -32,7 +32,7 @@ if CONFIG["VehicleControls"]["Enable"] then
 
         if CONFIG["VehicleControls"]["DoorControl"] then 
             TriggerEvent("chat:addSuggestion", "/door", _U("doorCommandSug"), {
-                { name="door", help="The door to open: fd, fp, rd, rp" }
+                { name=_U("doorCommandName"), help=_U("doorCommandHelp") }
             }) 
             RegisterCommand("door", function(source, args, rawCommands) 
                 if args ~= nil then
@@ -55,7 +55,7 @@ if CONFIG["VehicleControls"]["Enable"] then
 
         if CONFIG["VehicleControls"]["WindowControl"] then 
             TriggerEvent("chat:addSuggestion", "/window", _U("windowCommandSug"), {
-                { name="window", help="The window to open: fd, fp, rd, rp" }
+                { name=_U("windowCommandName"), help=_U("windowCommandHelp") }
             })
             RegisterCommand("window", function(source, args, rawCommands) 
                 if args ~= nil then

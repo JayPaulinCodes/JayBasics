@@ -25,6 +25,41 @@ LOCALES["en"] = {
     ["tasersightCommandSug"] = "toggles the laser sight for tasers",
     ["jailCommandSug"] = "jail a player",
 
+    -- Command Arguments
+    ["meCommandName"] = "action",
+    ["meCommandHelp"] = "an action your character will do.",
+    ["merCommandName"] = "action",
+    ["merCommandHelp"] = "an action your character will do.",
+    ["oocCommandName"] = "message",
+    ["oocCommandHelp"] = "out of context message.",
+    ["gmeCommandName"] = "action",
+    ["gmeCommandHelp"] = "an action your character will do.",
+    ["gmerCommandName"] = "action",
+    ["gmerCommandHelp"] = "an action your character will do.",
+    ["doorCommandName"] = "door",
+    ["doorCommandHelp"] = "the door to open: fd, fp, rd, rp",
+    ["windowCommandName"] = "window",
+    ["windowCommandHelp"] = "the window to open: fd, fp, rd, rp",
+
+    -- HTML Chat Templates
+    ["chatTemplateMessageOOC"] = "<p><span style=\"font-weight:bold;color:%s\">[OOC] {0} [#{1}]</span><span style=\"font-weight:normal\">: {2}</span></p>",
+    ["chatTemplateMessageMe"] = "<p><span style=\"font-weight:normal;color:$s\">{0} [#{1}] ({2}m)</span><span style=\"font-weight:normal;\">: {3}</span></p>",
+    ["chatTemplateMessageMeSelf"] = "<p><span style=\"font-weight:normal;color:%s\">{0} [#{1}]</span><span style=\"font-weight:normal;\">: {2}</span></p>",
+    ["chatTemplateMessageMer"] = "<p><span style=\"font-weight:normal;color:%s\">{0} [#{1}] ({2}m)</span><span style=\"font-weight:normal\">: </span><span style=\"font-weight:bold;color:#FF0000\"> {3}</span></p>",
+    ["chatTemplateMessageMerSelf"] = "<p><span style=\"font-weight:normal;color:%s\">{0} [#{1}]</span><span style=\"font-weight:normal\">: </span><span style=\"font-weight:bold;color:#FF0000\"> {2}</span></p>",
+    ["chatTemplateMessageGme"] = "<p><span style=\"font-weight:normal;color:%s\">{0} [#{1}]</span><span style=\"font-weight:normal\">: {2}</span></p>",
+    ["chatTemplateMessageGmer"] = "<p><span style=\"font-weight:normal;color:%s\">{0} [#{1}]</span><span style=\"font-weight:normal\">: </span><span style=\"font-weight:bold;color:#FF0000\">{2}</span></p>",
+    ["chatTemplateMessageJudgeSentence"] = "<img src='https://i.imgur.com/iqQZ90a.png' height='16' style='border-radius: 5px'> <b style='color: #000000'>JUDGE SENTENCE</b>: {0} has been sentenced to {1} months in {2} for {3}.",
+    ["chatTemplateMessageWardenRelease"] = "<b style='color: #4165B4'>WARDEN</b>: Your jail sentence has elapsed, your a free man once again. I'm sure we will be seeing you again soon.",
+
+    -- Chat Commands / Character Module
+    ["whoAmIPlayingAs"] = "Currently Playing As: ",
+    ["setNamePrompt"] = "What's Your Character's Name?",
+
+    -- Discord Presence Module
+    ["statusMessageWithName"] = "patroling As %s In %s",
+    ["statusMessageWithoutName"] = "patroling In %s",
+
     -- Vehicle Control Module
     ["frontDriver"] = "Front Driver",
     ["frontPassenger"] = "Front Passenger",

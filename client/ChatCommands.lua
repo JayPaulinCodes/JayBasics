@@ -16,7 +16,7 @@ if CONFIG["ChatCommands"]["Enable"] and not CONFIG["ChatCommands"]["UseDefaultNa
                 options = {
                     position = "top-right",
                     text = {
-                        primary = "Currently Playing As: ",
+                        primary = _("whoAmIPlayingAs"),
                         secondary = PlayerName
                     },
                     autoClose = true
@@ -36,7 +36,7 @@ if CONFIG["ChatCommands"]["Enable"] and not CONFIG["ChatCommands"]["UseDefaultNa
                 options = {
                     position = "top-right",
                     text = {
-                        primary = "Currently Playing As: ",
+                        primary = _("whoAmIPlayingAs"),
                         secondary = PlayerName
                     },
                     autoClose = true
@@ -53,7 +53,7 @@ end
 if CONFIG["ChatCommands"]["Enable"] and CONFIG["ChatCommands"]["meCommand"] then
 
     TriggerEvent("chat:addSuggestion", "/me", _U("meCommandSug"), {
-        { name="Action", help="action."}
+        { name=_U("meCommandName"), help=_U("meCommandHelp")}
     })
 
     RegisterNetEvent("Jay:Basics:sendProximityMessageMe")
@@ -101,7 +101,7 @@ end
 if CONFIG["ChatCommands"]["Enable"] and CONFIG["ChatCommands"]["merCommand"] then
 
     TriggerEvent("chat:addSuggestion", "/mer", _U("merCommandSug"), {
-        { name="Action", help="action."}
+        { name=_U("merCommandName"), help=_U("merCommandHelp")}
     })
 
     RegisterNetEvent("Jay:Basics:sendProximityMessageMer")
@@ -147,7 +147,7 @@ end
 if CONFIG["ChatCommands"]["Enable"] and CONFIG["ChatCommands"]["oocCommand"] then
     
     TriggerEvent("chat:addSuggestion", "/ooc", _U("oocCommandSug"), {
-        { name="Message", help="Put out of context chat."}
+        { name=_U("oocCommandName"), help=_U("oocCommandHelp")}
     })
 
 end
@@ -155,15 +155,15 @@ end
 if CONFIG["ChatCommands"]["Enable"] and CONFIG["ChatCommands"]["gmeCommand"] then
     
     TriggerEvent("chat:addSuggestion", "/gme", _U("gmeCommandSug"), {
-        { name="Action", help="action."}
+        { name=_U("gmeCommandName"), help=_U("gmeCommandHelp")}
     })
 
 end
 
 if CONFIG["ChatCommands"]["Enable"] and CONFIG["ChatCommands"]["gmerCommand"] then
     
-    TriggerEvent("chat:addSuggestion", "/gme", _U("gmerCommandSug"), {
-        { name="Action", help="action."}
+    TriggerEvent("chat:addSuggestion", "/gmer", _U("gmerCommandSug"), {
+        { name=_U("gmerCommandName"), help=_U("gmerCommandHelp")}
     })
 
 end
