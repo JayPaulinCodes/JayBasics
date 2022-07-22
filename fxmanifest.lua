@@ -32,6 +32,7 @@ client_scripts {
     "client/main.lua",
     "client/functions.lua",
     "client/VehicleControls.lua",
+    "client/DiscordPresence.lua",
     "client/ChatCommands.lua",
     "client/WeaponsControls.lua",
     "client/Jail.lua"
