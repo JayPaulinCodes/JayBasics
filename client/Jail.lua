@@ -12,17 +12,8 @@ if CONFIG["Jail"]["Enable"] then
         local playersNearby = getPlayersInRadius(50, false)
         local closePlayers = {}
 
-        -- for key, value in ipairs(ClientPlayerNames) do
-        --     print("BSX: ", key, value)
-        -- end
-
         for key, playerIdx in ipairs(playersNearby) do
             local targetPlayerId = playerIdx
-            -- local targetPlayerPlayer = GetPlayerFromServerId(targetPlayerId)
-            -- local targetPlayerPed = GetPlayerPed(targetPlayerPlayer)
-            -- print(key, targetPlayerId, GetPlayerName(targetPlayerId), targetPlayerPlayer, GetPlayerName(targetPlayerPlayer), targetPlayerPed, GetPlayerName(targetPlayerPed))
-
-            -- print(key, playerIdx, targetPlayerId, ClientPlayerNames["SID_"..targetPlayerId])
 
             table.insert(closePlayers, {
                 name = ClientPlayerNames["SID_"..targetPlayerId],

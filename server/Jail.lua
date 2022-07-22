@@ -14,9 +14,6 @@ if CONFIG["Jail"]["Enable"] then
 
     RegisterServerEvent("Jay:Basics:jailPlayerRequest")
     AddEventHandler("Jay:Basics:jailPlayerRequest", function(NUIData, jail) 
-
-        -- print(NUIData.targetName, math.floor((NUIData.length / 10)), jail.name, NUIData.reason)
-        -- print(NUIData.targetId)
         
         TriggerClientEvent('Jay:Basics:jailPlayer', NUIData.targetId, jail, NUIData.length)
 

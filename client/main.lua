@@ -96,7 +96,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:messageOOC", 
-            "<p><span style=\"font-weight:bold;color:" .. CONFIG["ChatCommands"]["oocHex"] .. "\">[OOC] {0} [#{1}]</span><span style=\"font-weight:normal\">: {2}</span></p>"
+            _("chatTemplateMessageOOC", CONFIG["ChatCommands"]["oocHex"])
         )
     end
 
@@ -110,7 +110,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:messageMe", 
-            "<p><span style=\"font-weight:normal;color:" .. CONFIG["ChatCommands"]["meHex"] .. "\">{0} [#{1}] ({2}m)</span><span style=\"font-weight:normal;\">: {3}</span></p>"
+            _("chatTemplateMessageMe", CONFIG["ChatCommands"]["meHex"])
         )
 
         --[[
@@ -121,7 +121,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:messageMe:self", 
-            "<p><span style=\"font-weight:normal;color:" .. CONFIG["ChatCommands"]["meHex"] .. "\">{0} [#{1}]</span><span style=\"font-weight:normal;\">: {2}</span></p>"
+            _("chatTemplateMessageMeSelf", CONFIG["ChatCommands"]["meHex"])
         )
     end
 
@@ -135,7 +135,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:messageMer", 
-            "<p><span style=\"font-weight:normal;color:" .. CONFIG["ChatCommands"]["merHex"] .. "\">{0} [#{1}] ({2}m)</span><span style=\"font-weight:normal\">: </span><span style=\"font-weight:bold;color:#FF0000\"> {3}</span></p>"
+            _("chatTemplateMessageMer", CONFIG["ChatCommands"]["merHex"])
         )
 
         --[[
@@ -146,7 +146,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:messageMer:self", 
-            "<p><span style=\"font-weight:normal;color:" .. CONFIG["ChatCommands"]["merHex"] .. "\">{0} [#{1}]</span><span style=\"font-weight:normal\">: </span><span style=\"font-weight:bold;color:#FF0000\"> {2}</span></p>"
+            _("chatTemplateMessageMerSelf", CONFIG["ChatCommands"]["merHex"])
         )
     end
 
@@ -159,7 +159,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:messageGme", 
-            "<p><span style=\"font-weight:normal;color:" .. CONFIG["ChatCommands"]["gmeHex"] .. "\">{0} [#{1}]</span><span style=\"font-weight:normal\">: {2}</span></p>"
+            _("chatTemplateMessageGme", CONFIG["ChatCommands"]["gmeHex"])
         )
     end
 
@@ -172,7 +172,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:messageGmer", 
-            "<p><span style=\"font-weight:normal;color:" .. CONFIG["ChatCommands"]["gmerHex"] .. "\">{0} [#{1}]</span><span style=\"font-weight:normal\">: </span><span style=\"font-weight:bold;color:#FF0000\">{2}</span></p>"
+            _("chatTemplateMessageGmer", CONFIG["ChatCommands"]["gmerHex"])
         )
     end
 
@@ -186,7 +186,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:judgeSentence", 
-            "<img src='https://i.imgur.com/iqQZ90a.png' height='16' style='border-radius: 5px'> <b style='color: #000000'>JUDGE SENTENCE</b>: {0} has been sentenced to {1} months in {2} for {3}."
+            _("chatTemplateMessageJudgeSentence")
         )
     end
 
@@ -196,7 +196,7 @@ Citizen.CreateThread(function()
         ]]
         TriggerEvent("chat:addTemplate", 
             "Jay:Basics:wardenRelease", 
-            "<b style='color: #4165B4'>WARDEN</b>: Your jail sentence has elapsed, your a free man once again. I'm sure we will be seeing you again soon."
+            _("chatTemplateMessageWardenRelease")
         )
     end
 
@@ -206,7 +206,7 @@ RegisterNetEvent("Jay:Basics:setPlayerName")
 AddEventHandler("Jay:Basics:setPlayerName", function() 
     if CONFIG["ChatCommands"]["Enable"] then
         if not CONFIG["ChatCommands"]["UseDefaultNames"] then
-            PlayerName = getUserTextInput("What's Your Character's Name?", "John Doe", 30)
+            PlayerName = getUserTextInput(_U("setNamePrompt"), "John Doe", 30)
             TriggerServerEvent("Jay:Basics:setPlayerName", PlayerLicense, PlayerName)
         end
     end
